@@ -58,6 +58,7 @@
       top: 22px;
       right: 20px;
       user-select: none;
+      z-index: 1000;
     }
 
     /* Hero section */
@@ -102,9 +103,9 @@
       padding: 15px;
     }
 
-    /* Responsive styles */
+    /* Responsive styles for hamburger only on index.html */
     @media (max-width: 768px) {
-      nav {
+      nav.responsive {
         flex-direction: column;
         align-items: flex-start;
         padding: 0;
@@ -116,17 +117,14 @@
         left: 0;
         z-index: 999;
       }
-      nav.show {
+      nav.responsive.show {
         display: flex;
       }
-      nav a {
+      nav.responsive a {
         margin: 12px 20px;
         width: calc(100% - 40px);
         padding: 12px 20px;
         border-top: 1px solid #006400;
-      }
-      .hamburger {
-        display: block;
       }
     }
   </style>
@@ -175,18 +173,32 @@
     const hamburger = document.getElementById('hamburger');
     const navbar = document.getElementById('navbar');
 
-    hamburger.addEventListener('click', () => {
-      navbar.classList.toggle('show');
-    });
+    // Get current page filename
+    const currentPage = window.location.pathname.split('/').pop();
 
-    // Optional: Close menu when a nav link is clicked (for better UX)
-    document.querySelectorAll('#navbar a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (navbar.classList.contains('show')) {
-          navbar.classList.remove('show');
-        }
+    if (currentPage === 'index.html' || currentPage === '') {
+      // Show hamburger and enable toggle only on index.html (homepage)
+      hamburger.style.display = 'block';
+      navbar.classList.add('responsive'); // enable responsive styles
+
+      hamburger.addEventListener('click', () => {
+        navbar.classList.toggle('show');
       });
-    });
+
+      // Close menu on link click for better UX
+      document.querySelectorAll('#navbar a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (navbar.classList.contains('show')) {
+            navbar.classList.remove('show');
+          }
+        });
+      });
+    } else {
+      // For other pages (like contact.html), hide hamburger and show nav normally
+      hamburger.style.display = 'none';
+      navbar.classList.remove('responsive');
+      navbar.style.display = 'flex';  // always show nav links horizontally
+    }
   </script>
 </body>
 </html>
