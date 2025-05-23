@@ -27,6 +27,7 @@
       font-size: 2.5em;
     }
     nav {
+      position: relative; /* for hamburger */
       background-color: #004d00;
       padding: 15px;
       display: flex;
@@ -50,7 +51,7 @@
 
     /* Hamburger menu styles */
     .hamburger {
-      display: none;
+      display: none; /* hide on desktop */
       font-size: 28px;
       color: white;
       cursor: pointer;
@@ -103,7 +104,7 @@
       padding: 15px;
     }
 
-    /* Responsive styles for hamburger only on index.html */
+    /* Responsive styles for mobile only */
     @media (max-width: 768px) {
       nav.responsive {
         flex-direction: column;
@@ -126,6 +127,9 @@
         padding: 12px 20px;
         border-top: 1px solid #006400;
       }
+      .hamburger {
+        display: block; /* show hamburger on mobile */
+      }
     }
   </style>
 </head>
@@ -135,14 +139,14 @@
     <p>Your Trusted Partner in Solar Agriculture Solutions</p>
   </header>
 
-  <!-- Hamburger icon -->
-  <div class="hamburger" id="hamburger">&#9776;</div>
-
   <nav id="navbar">
     <a href="index.html">Home</a>
     <a href="products.html">Products</a>
     <a href="about.html">About Us</a>
     <a href="contact.html">Contact</a>
+
+    <!-- Hamburger icon -->
+    <div class="hamburger" id="hamburger">&#9776;</div>
   </nav>
 
   <section class="hero">
@@ -177,15 +181,15 @@
     const currentPage = window.location.pathname.split('/').pop();
 
     if (currentPage === 'index.html' || currentPage === '') {
-      // Show hamburger and enable toggle only on index.html (homepage)
+      // Show hamburger and enable responsive nav on mobile only
       hamburger.style.display = 'block';
-      navbar.classList.add('responsive'); // enable responsive styles
+      navbar.classList.add('responsive');
 
       hamburger.addEventListener('click', () => {
         navbar.classList.toggle('show');
       });
 
-      // Close menu on link click for better UX
+      // Close menu on nav link click
       document.querySelectorAll('#navbar a').forEach(link => {
         link.addEventListener('click', () => {
           if (navbar.classList.contains('show')) {
@@ -194,10 +198,11 @@
         });
       });
     } else {
-      // For other pages (like contact.html), hide hamburger and show nav normally
+      // For other pages, hide hamburger and show nav links inline
       hamburger.style.display = 'none';
       navbar.classList.remove('responsive');
-      navbar.style.display = 'flex';  // always show nav links horizontally
+      navbar.style.display = 'flex';
+      navbar.classList.remove('show'); // remove open menu if any
     }
   </script>
 </body>
