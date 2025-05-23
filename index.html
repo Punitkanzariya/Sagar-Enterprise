@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="google-site-verification" content="c5wqqvljNLtWs-Y4wO0iCSnqaLrhL6Gwf1jaQhjBxSE" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sagar Enterprise Bhatiya - Solar & Agriculture Solutions</title>
-  <meta name="description" content="Sagar Enterprise Bhatiya provides eco-friendly solar fencing and agricultural products. Trusted partner in sustainable farming solutions.">
-  <meta name="keywords" content="Sagar Enterprise Bhatiya, solar products, agriculture solutions, Gujarat, solar fencing, sustainable farming">
-  <meta name="author" content="Sagar Enterprise Bhatiya">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Sagar Enterprise Bhatiya provides eco-friendly solar fencing and agricultural products. Trusted partner in sustainable farming solutions." />
+  <meta name="keywords" content="Sagar Enterprise Bhatiya, solar products, agriculture solutions, Gujarat, solar fencing, sustainable farming" />
+  <meta name="author" content="Sagar Enterprise Bhatiya" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -27,10 +27,11 @@
       font-size: 2.5em;
     }
     nav {
-      display: flex;
-      justify-content: center;
       background-color: #004d00;
       padding: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     nav a {
       color: white;
@@ -38,10 +39,28 @@
       margin: 0 20px;
       font-weight: bold;
       font-size: 16px;
+      transition: background-color 0.3s ease;
+      padding: 8px 12px;
+      border-radius: 4px;
     }
     nav a:hover {
-      text-decoration: underline;
+      background-color: #006400;
+      text-decoration: none;
     }
+
+    /* Hamburger menu styles */
+    .hamburger {
+      display: none;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+      position: absolute;
+      top: 22px;
+      right: 20px;
+      user-select: none;
+    }
+
+    /* Hero section */
     .hero {
       background: url('https://images.unsplash.com/photo-1603366615917-1fa6dad5c4e3?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
       color: white;
@@ -82,6 +101,34 @@
       text-align: center;
       padding: 15px;
     }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        display: none; /* hide nav links by default */
+        width: 100%;
+        background-color: #004d00;
+        position: absolute;
+        top: 64px; /* below header */
+        left: 0;
+        z-index: 999;
+      }
+      nav.show {
+        display: flex;
+      }
+      nav a {
+        margin: 12px 20px;
+        width: calc(100% - 40px);
+        padding: 12px 20px;
+        border-top: 1px solid #006400;
+      }
+      .hamburger {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
@@ -90,7 +137,10 @@
     <p>Your Trusted Partner in Solar Agriculture Solutions</p>
   </header>
 
-  <nav>
+  <!-- Hamburger icon -->
+  <div class="hamburger" id="hamburger">&#9776;</div>
+
+  <nav id="navbar">
     <a href="index.html">Home</a>
     <a href="products.html">Products</a>
     <a href="about.html">About Us</a>
@@ -120,5 +170,23 @@
   <footer>
     &copy; 2025 Sagar Enterprise Bhatiya. All rights reserved.
   </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navbar = document.getElementById('navbar');
+
+    hamburger.addEventListener('click', () => {
+      navbar.classList.toggle('show');
+    });
+
+    // Optional: Close menu when a nav link is clicked (for better UX)
+    document.querySelectorAll('#navbar a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navbar.classList.contains('show')) {
+          navbar.classList.remove('show');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
