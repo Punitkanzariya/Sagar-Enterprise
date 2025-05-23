@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact - Sagar Enterprise</title>
   <style>
+    .whatsapp {
+      color: green;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .whatsapp:hover {
+      text-decoration: underline;
+      color: #25D366;
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -22,6 +32,16 @@
       color: white;
       text-align: center;
       padding: 20px 10px;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 30px;
+      cursor: pointer;
+      padding: 15px;
+      background-color: #004d00;
+      color: white;
+      text-align: right;
     }
 
     nav {
@@ -77,11 +97,12 @@
       gap: 30px;
     }
 
-    .col-lg-5, .col-lg-7 {
-      flex: 1 1 100%;
+    .col-lg-5,
+    .col-lg-7 {
+      flex: 1 1 300px;
     }
 
-    .info-wrap, form {
+    .info-wrap {
       background-color: #ffffff;
       padding: 25px;
       border-radius: 12px;
@@ -111,7 +132,14 @@
       color: #333;
     }
 
-    form label {
+    form {
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    label {
       display: block;
       font-weight: 600;
       margin-bottom: 5px;
@@ -155,59 +183,34 @@
     }
 
     iframe {
-      width: 100%;
-      height: 350px;
-      border: 0;
       margin-top: 20px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
-    .whatsapp {
-      color: green;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .whatsapp:hover {
-      text-decoration: underline;
-      color: #25D366;
-    }
-
-    @media (min-width: 768px) {
-      .col-lg-5 {
-        flex: 0 0 40%;
-      }
-      .col-lg-7 {
-        flex: 0 0 58%;
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
       }
 
-      .row .col-md-6 {
-        width: 48%;
-        float: left;
-        margin-right: 4%;
+      nav {
+        display: none;
+        flex-direction: column;
+        background-color: #004d00;
+        text-align: center;
       }
 
-      .row .col-md-6:last-child {
-        margin-right: 0;
+      nav.show {
+        display: flex;
       }
 
-      .row .col-md-12 {
-        width: 100%;
-        float: none;
-        clear: both;
+      nav a {
+        padding: 12px;
+        border-top: 1px solid #006400;
       }
-    }
 
-    @media (max-width: 767px) {
       .row {
         flex-direction: column;
-      }
-
-      .row .col-md-6,
-      .row .col-md-12 {
-        width: 100%;
-        margin-right: 0;
       }
     }
   </style>
@@ -217,75 +220,79 @@
     <h1>Contact Us</h1>
   </header>
 
-  <nav>
+  <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+
+  <nav id="navbar">
     <a href="index.html">Home</a>
     <a href="products.html">Products</a>
     <a href="about.html">About Us</a>
     <a href="contact.html">Contact</a>
   </nav>
 
-  <main>
+  <main class="main">
     <section id="contact" class="contact section">
-      <div class="section-title">
+      <div class="container section-title">
         <h2>Contact</h2>
-        <p>Get in touch with us to discuss your needs, projects, or inquiries. Whether you have questions, feedback, or just want to say hello, we're here to help.</p>
+        <p>Get in touch with us to discuss your needs, projects, or inquiries. Whether you have questions, feedback, or just want to say hello, we're here to help. Feel free to reach out and connect with Me—I'm always excited to hear from you!</p>
       </div>
 
-      <div class="row">
-        <div class="col-lg-5">
-          <div class="info-wrap">
-            <div class="info-item">
-              <i class="bi bi-geo-alt"></i>
-              <div>
-                <h3>Address</h3>
-                <p>Praharsh Platinium, South Bopal, Ahmedabad, Gujarat, India</p>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5">
+            <div class="info-wrap">
+              <div class="info-item">
+                <i class="bi bi-geo-alt"></i>
+                <div>
+                  <h3>Address</h3>
+                  <p>Praharsh Platinium, South Bopal, Ahmedabad, Gujarat, India</p>
+                </div>
               </div>
-            </div>
-            <div class="info-item">
-              <i class="bi bi-telephone"></i>
-              <div>
-                <h3>Call Me</h3>
-                <p><a href="https://wa.me/919624561580" class="whatsapp" target="_blank">+91 96245 61580</a></p>
+              <div class="info-item">
+                <i class="bi bi-telephone"></i>
+                <div>
+                  <h3>Call Me</h3>
+                  <p><a href="https://wa.me/919624561580" class="whatsapp" target="_blank">+91 96245 61580</a></p>
+                </div>
               </div>
-            </div>
-            <div class="info-item">
-              <i class="bi bi-envelope"></i>
-              <div>
-                <h3>Email Me</h3>
-                <p><a href="mailto:punitkanzariya4706@gmail.com" class="whatsapp">punitkanzariya4706@gmail.com</a></p>
+              <div class="info-item">
+                <i class="bi bi-envelope"></i>
+                <div>
+                  <h3>Email Me</h3>
+                  <p><a href="mailto:punitkanzariya4706@gmail.com" class="whatsapp">punitkanzariya4706@gmail.com</a></p>
+                </div>
               </div>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d237.9790582088083!2d69.27140355092041!3d22.089764179632635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39568b46e9e7e6c5%3A0xd3930e8f5bc182fd!2s37QC%2BVH7%2C%20Bhatiya%2C%20Gujarat%20361315!5e1!3m2!1sen!2sin!4v1748010555414!5m2!1sen!2sin" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d237.9790582088083!2d69.27140355092041!3d22.089764179632635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39568b46e9e7e6c5%3A0xd3930e8f5bc182fd!2s37QC%2BVH7%2C%20Bhatiya%2C%20Gujarat%20361315!5e1!3m2!1sen!2sin!4v1748010555414!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
-        </div>
 
-        <div class="col-lg-7">
-          <form id="contact-form" onsubmit="sendEmail(event)">
-            <div class="row">
-              <div class="col-md-6">
-                <label for="name-field">Your Name</label>
-                <input type="text" id="name-field" name="user_name" required>
+          <div class="col-lg-7">
+            <form id="contact-form" onsubmit="sendEmail(event)">
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="name-field">Your Name</label>
+                  <input type="text" id="name-field" name="user_name" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="email-field">Your Email</label>
+                  <input type="email" id="email-field" name="user_email" required>
+                </div>
+                <div class="col-md-12">
+                  <label for="subject-field">Subject</label>
+                  <input type="text" id="subject-field" name="subject" required>
+                </div>
+                <div class="col-md-12">
+                  <label for="message-field">Message</label>
+                  <textarea id="message-field" name="message" rows="10" required></textarea>
+                </div>
+                <div class="col-md-12 text-center">
+                  <div id="loading" style="display:none;">Loading...</div>
+                  <div id="success-message" style="display:none; color:green;">Your message has been sent. Thank you!</div>
+                  <div id="error-message" style="display:none; color:red;">There was an error. Please try again later.</div>
+                  <button type="submit">Send Message</button>
+                </div>
               </div>
-              <div class="col-md-6">
-                <label for="email-field">Your Email</label>
-                <input type="email" id="email-field" name="user_email" required>
-              </div>
-              <div class="col-md-12">
-                <label for="subject-field">Subject</label>
-                <input type="text" id="subject-field" name="subject" required>
-              </div>
-              <div class="col-md-12">
-                <label for="message-field">Message</label>
-                <textarea id="message-field" name="message" rows="8" required></textarea>
-              </div>
-              <div class="col-md-12">
-                <div id="loading" style="display:none;">Loading...</div>
-                <div id="success-message" style="display:none; color:green;">Your message has been sent. Thank you!</div>
-                <div id="error-message" style="display:none; color:red;">There was an error. Please try again later.</div>
-                <button type="submit">Send Message</button>
-              </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </section>
@@ -294,5 +301,21 @@
   <footer>
     &copy; 2025 Sagar Enterprise. All rights reserved.
   </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navbar").classList.toggle("show");
+    }
+
+    function sendEmail(event) {
+      event.preventDefault();
+      document.getElementById("loading").style.display = "block";
+      setTimeout(() => {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("success-message").style.display = "block";
+        document.getElementById("contact-form").reset();
+      }, 2000);
+    }
+  </script>
 </body>
 </html>
