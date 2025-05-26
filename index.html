@@ -162,16 +162,30 @@
         display: block;
       }
     }
+    .logo {
+    position: absolute;
+    left: 20px;
+    top: auto;
+  }
+
+  .logo img {
+    width: 200px;
+    height: 100px;
+    display: block;
+  }
   </style>
 </head>
 <body>
+<header>
+  <div class="logo">
+    <img src="images/logo.png" alt="Sagar Enterprise Logo" />
+  </div>
+  <h1>Welcome to Sagar Enterprise Bhatiya</h1>
+  <p>Your Trusted Partner in Solar Agriculture Solutions</p>
+  <div class="hamburger" id="hamburger">&#9776;</div>
+</header>
 
-  <header>
-    <div class="logo">Sagar Enterprise</div>
-    <h1>Welcome to Sagar Enterprise Bhatiya</h1>
-    <p>Your Trusted Partner in Solar Agriculture Solutions</p>
-    <div class="hamburger" id="hamburger">&#9776;</div>
-  </header>
+
 
   <!-- Overlay -->
   <div class="overlay" id="overlay"></div>
