@@ -36,6 +36,15 @@
       top: 20px;
       font-size: 20px;
       font-weight: bold;
+      width: 200px;
+      height: 100px;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
     }
 
     .hamburger {
@@ -119,6 +128,37 @@
 
     /* Responsive styles */
     @media (max-width: 768px) {
+      /* Header flex layout to avoid overlap */
+      header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 15px 20px;
+        position: relative;
+        height: auto;
+        text-align: left;
+      }
+
+      header h1 {
+        font-size: 1.8em;
+        margin-left: 15px;
+        margin-bottom: 0;
+        flex: 1;
+      }
+
+      .logo {
+        position: static;  /* remove absolute positioning */
+        width: 120px;
+        height: auto;
+      }
+
+      .logo img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
       .hamburger {
         display: block;
       }
@@ -160,17 +200,6 @@
         display: block;
       }
     }
-    .logo {
-    position: absolute;
-    left: 20px;
-    top: 20px;
-  }
-
-  .logo img {
-    width: 200px;
-    height: 100px;
-    display: block;
-  }
   </style>
 </head>
 <body>
@@ -246,4 +275,3 @@
 
 </body>
 </html>
-  
