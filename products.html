@@ -20,42 +20,34 @@
     header {
       background: linear-gradient(to right, #006400, #228B22);
       color: white;
-      text-align: center;
-      padding: 40px 20px;
-      position: relative;
+      padding: 20px;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-
-    .logo {
-      position: absolute;
-      left: 20px;
-      top: 20px;
-      font-size: 20px;
-      font-weight: bold;
-      width: 200px;
-      height: 100px;
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .logo img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: contain;
+      width: 100px;
+      height: auto;
+    }
+
+    .title {
+      flex: 1;
+      text-align: center;
+      font-size: 1.8em;
+      font-weight: 600;
     }
 
     .hamburger {
-      display: none;
       font-size: 28px;
       color: white;
       cursor: pointer;
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      z-index: 1001;
+      display: none;
+      background: none;
+      border: none;
     }
 
     nav {
@@ -126,39 +118,8 @@
       padding: 15px;
     }
 
-    /* Responsive styles */
+    /* Mobile Responsive */
     @media (max-width: 768px) {
-      /* Header flex layout to avoid overlap */
-      header {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 15px 20px;
-        position: relative;
-        height: auto;
-        text-align: left;
-      }
-
-      header h1 {
-        font-size: 1.8em;
-        margin-left: 15px;
-        margin-bottom: 0;
-        flex: 1;
-      }
-
-      .logo {
-        position: static;  /* remove absolute positioning */
-        width: 120px;
-        height: auto;
-      }
-
-      .logo img {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-
       .hamburger {
         display: block;
       }
@@ -199,17 +160,27 @@
       .overlay.show {
         display: block;
       }
+
+      .title {
+        font-size: 1.5em;
+      }
+
+      .logo img {
+        width: 80px;
+      }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">
-      <img src="images/logo.png" alt="Sagar Enterprise Logo" />
+    <div class="header-container">
+      <div class="logo">
+        <img src="images/logo.png" alt="Sagar Enterprise Logo" />
+      </div>
+      <div class="title">Our Products</div>
+      <button class="hamburger" id="hamburger">&#9776;</button>
     </div>
-    <h1>Our Products</h1>
-    <div class="hamburger" id="hamburger">&#9776;</div>
   </header>
 
   <!-- Overlay -->
