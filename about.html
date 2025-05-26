@@ -2,38 +2,206 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us - Sagar Enterprise</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - Sagar Enterprise Bhatiya</title>
+  <meta name="description" content="Learn about Sagar Enterprise Bhatiya - your trusted partner for solar and agricultural solutions in Gujarat." />
+  <meta name="keywords" content="About Sagar Enterprise Bhatiya, solar fencing, agriculture solutions, Gujarat" />
+  <meta name="author" content="Sagar Enterprise Bhatiya" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-    header, footer { background-color: #006400; color: white; text-align: center; padding: 15px; }
-    nav { background-color: #004d00; display: flex; justify-content: center; gap: 20px; padding: 10px; }
-    nav a { color: white; text-decoration: none; font-weight: bold; }
-    .content { padding: 30px; line-height: 1.6; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(to right, #006400, #228B22);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    .logo {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      z-index: 1001;
+    }
+
+    nav {
+      background-color: #004d00;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+
+    nav a:hover {
+      background-color: #006400;
+    }
+
+    nav a.active {
+      background-color: #008000;
+    }
+
+    .content {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .content h2 {
+      font-size: 2.2em;
+      color: #006400;
+      margin-bottom: 20px;
+    }
+
+    .content p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      background-color: #006400;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 250px;
+        background-color: #004d00;
+        transform: translateX(-100%);
+        z-index: 1000;
+      }
+
+      nav.show {
+        transform: translateX(0);
+      }
+
+      nav a {
+        margin: 20px;
+        padding: 12px 20px;
+        width: 100%;
+        border-bottom: 1px solid #006400;
+      }
+
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      }
+
+      .overlay.show {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>About Sagar Enterprise</h1>
+    <div class="logo">Sagar Enterprise</div>
+    <h1>About Us</h1>
+    <p>Know more about our mission and journey</p>
+    <div class="hamburger" id="hamburger">&#9776;</div>
   </header>
 
-  <nav>
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
     <a href="index.html">Home</a>
     <a href="products.html">Products</a>
-    <a href="about.html">About Us</a>
+    <a href="about.html" class="active">About Us</a>
     <a href="contact.html">Contact</a>
   </nav>
 
   <section class="content">
-    <p>Sagar Enterprise is a trusted name in solar agricultural solutions based in Ahmedabad, Gujarat. With a focus on quality and innovation, we offer a wide range of solar-powered products including Zatka Machines, solar panels, and fencing accessories tailored for modern farms.</p>
-
-    <p>Our mission is to empower farmers with sustainable and affordable energy solutions that enhance productivity and security. Every product is tested and selected to meet the diverse needs of Indian agriculture.</p>
-
-    <p>We take pride in our customer service and reliability, building long-term relationships with clients across India.</p>
+    <h2>Who We Are</h2>
+    <p>Sagar Enterprise Bhatiya is a leading provider of solar fencing systems and innovative agricultural products. Based in Gujarat, we have built a strong reputation for delivering high-quality, eco-friendly, and affordable solar solutions tailored for rural and agricultural use.</p>
+    <p>Our mission is to empower farmers with sustainable technology, improve crop protection, and contribute to a greener future. We are committed to customer satisfaction and long-term support through expert consultation, durable products, and transparent service.</p>
+    <p>With years of experience and a growing client base, Sagar Enterprise continues to expand its footprint while staying rooted in trust, quality, and innovation.</p>
   </section>
 
   <footer>
-    &copy; 2025 Sagar Enterprise. All rights reserved.
+    &copy; 2025 Sagar Enterprise Bhatiya. All rights reserved.
   </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navbar = document.getElementById('navbar');
+    const overlay = document.getElementById('overlay');
+
+    let isOpen = false;
+
+    function toggleMenu() {
+      isOpen = !isOpen;
+      navbar.classList.toggle('show', isOpen);
+      overlay.classList.toggle('show', isOpen);
+      hamburger.innerHTML = isOpen ? '&times;' : '&#9776;';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+
+    document.querySelectorAll('#navbar a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (isOpen) toggleMenu();
+      });
+    });
+  </script>
+
 </body>
 </html>

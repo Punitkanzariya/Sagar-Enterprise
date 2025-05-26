@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="google-site-verification" content="c5wqqvljNLtWs-Y4wO0iCSnqaLrhL6Gwf1jaQhjBxSE" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sagar Enterprise Bhatiya - Solar & Agriculture Solutions</title>
   <meta name="description" content="Sagar Enterprise Bhatiya provides eco-friendly solar fencing and agricultural products. Trusted partner in sustainable farming solutions." />
@@ -14,26 +13,51 @@
       font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      background: #f0f8ff;
+      background: white;
+      overflow-x: hidden;
     }
+
     header {
       background: linear-gradient(to right, #006400, #228B22);
       color: white;
       text-align: center;
       padding: 40px 20px;
+      position: relative;
     }
+
     header h1 {
       margin: 0;
       font-size: 2.5em;
     }
+
+    .logo {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      z-index: 1001;
+    }
+
     nav {
-      position: relative; /* for hamburger */
       background-color: #004d00;
       padding: 15px;
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: transform 0.3s ease;
     }
+
     nav a {
       color: white;
       text-decoration: none;
@@ -44,40 +68,28 @@
       padding: 8px 12px;
       border-radius: 4px;
     }
+
     nav a:hover {
       background-color: #006400;
-      text-decoration: none;
     }
 
-    /* Hamburger menu styles */
-    .hamburger {
-      display: none; /* hide on desktop */
-      font-size: 28px;
-      color: white;
-      cursor: pointer;
-      position: absolute;
-      top: 22px;
-      right: 20px;
-      user-select: none;
-      z-index: 1000;
-    }
-
-    /* Hero section */
     .hero {
-      /* background: url('https://images.unsplash.com/photo-1603366615917-1fa6dad5c4e3?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover; */
-      color: white;
+      color: black;
       text-align: center;
       padding: 100px 20px;
     }
+
     .hero h2 {
       font-size: 2.5em;
       margin-bottom: 20px;
     }
+
     .hero p {
       font-size: 1.2em;
       max-width: 700px;
       margin: 0 auto;
     }
+
     .features {
       display: flex;
       flex-wrap: wrap;
@@ -85,6 +97,7 @@
       padding: 50px 20px;
       background-color: #ffffff;
     }
+
     .feature {
       background: #e6f7e6;
       border-radius: 10px;
@@ -94,9 +107,11 @@
       margin: 20px;
       text-align: center;
     }
+
     .feature h3 {
       color: #006400;
     }
+
     footer {
       background-color: #006400;
       color: white;
@@ -104,49 +119,69 @@
       padding: 15px;
     }
 
-    /* Responsive styles for mobile only */
+    /* Responsive styles */
     @media (max-width: 768px) {
-      nav.responsive {
+      .hamburger {
+        display: block;
+      }
+
+      nav {
         flex-direction: column;
         align-items: flex-start;
-        padding: 0;
-        display: none; /* hide nav links by default */
-        width: 100%;
-        background-color: #004d00;
-        position: absolute;
-        top: 64px; /* below header */
+        position: fixed;
+        top: 0;
         left: 0;
+        height: 100%;
+        width: 250px;
+        background-color: #004d00;
+        transform: translateX(-100%);
+        z-index: 1000;
+      }
+
+      nav.show {
+        transform: translateX(0);
+      }
+
+      nav a {
+        margin: 20px;
+        padding: 12px 20px;
+        width: 100%;
+        border-bottom: 1px solid #006400;
+      }
+
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.5);
         z-index: 999;
       }
-      nav.responsive.show {
-        display: flex;
-      }
-      nav.responsive a {
-        margin: 12px 20px;
-        width: calc(100% - 40px);
-        padding: 12px 20px;
-        border-top: 1px solid #006400;
-      }
-      .hamburger {
-        display: block; /* show hamburger on mobile */
+
+      .overlay.show {
+        display: block;
       }
     }
   </style>
 </head>
 <body>
+
   <header>
+    <div class="logo">Sagar Enterprise</div>
     <h1>Welcome to Sagar Enterprise Bhatiya</h1>
     <p>Your Trusted Partner in Solar Agriculture Solutions</p>
+    <div class="hamburger" id="hamburger">&#9776;</div>
   </header>
 
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Navigation -->
   <nav id="navbar">
     <a href="index.html">Home</a>
     <a href="products.html">Products</a>
     <a href="about.html">About Us</a>
     <a href="contact.html">Contact</a>
-
-    <!-- Hamburger icon -->
-    <div class="hamburger" id="hamburger">&#9776;</div>
   </nav>
 
   <section class="hero">
@@ -176,34 +211,26 @@
   <script>
     const hamburger = document.getElementById('hamburger');
     const navbar = document.getElementById('navbar');
+    const overlay = document.getElementById('overlay');
 
-    // Get current page filename
-    const currentPage = window.location.pathname.split('/').pop();
+    let isOpen = false;
 
-    if (currentPage === 'index.html' || currentPage === '') {
-      // Show hamburger and enable responsive nav on mobile only
-      hamburger.style.display = 'block';
-      navbar.classList.add('responsive');
-
-      hamburger.addEventListener('click', () => {
-        navbar.classList.toggle('show');
-      });
-
-      // Close menu on nav link click
-      document.querySelectorAll('#navbar a').forEach(link => {
-        link.addEventListener('click', () => {
-          if (navbar.classList.contains('show')) {
-            navbar.classList.remove('show');
-          }
-        });
-      });
-    } else {
-      // For other pages, hide hamburger and show nav links inline
-      hamburger.style.display = 'none';
-      navbar.classList.remove('responsive');
-      navbar.style.display = 'flex';
-      navbar.classList.remove('show'); // remove open menu if any
+    function toggleMenu() {
+      isOpen = !isOpen;
+      navbar.classList.toggle('show', isOpen);
+      overlay.classList.toggle('show', isOpen);
+      hamburger.innerHTML = isOpen ? '&times;' : '&#9776;';
     }
+
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+
+    document.querySelectorAll('#navbar a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (isOpen) toggleMenu();
+      });
+    });
   </script>
+
 </body>
 </html>
