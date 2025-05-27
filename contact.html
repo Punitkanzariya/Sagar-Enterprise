@@ -80,6 +80,7 @@
       padding: 30px;
       max-width: 1200px;
       margin: auto;
+      overflow-x: auto; /* Allow horizontal scroll if content too wide */
     }
 
     .section-title {
@@ -91,28 +92,20 @@
       margin-bottom: 10px;
     }
 
-        .row {
+    .row {
       display: flex;
-      flex-wrap: wrap; /* Allow wrapping on smaller screens */
+      flex-wrap: nowrap; /* Prevent wrapping, keep items in one row */
       gap: 30px;
-      justify-content: center; /* Center items if they don't fill the row */
+      justify-content: center;
     }
 
     .col-lg-5, .col-lg-7 {
-      flex: 1 1 calc(50% - 15px); /* 50% width minus half the gap */
-      box-sizing: border-box; /* Include padding and border in width */
-      min-width: 300px; /* Ensure readability */
+      flex: 0 0 calc(50% - 15px); /* Fixed 50% width minus half gap */
+      box-sizing: border-box;
+      min-width: 280px; /* Smaller min-width to fit smaller screens */
     }
 
-    /* Stack columns on small screens */
-    @media (max-width: 768px) {
-      .col-lg-5, .col-lg-7 {
-        flex: 1 1 100%; /* Full width */
-        min-width: unset; /* Remove min-width constraint */
-      }
-    }
-
-
+    /* Removed stacking media query to keep columns side-by-side always */
 
     .info-wrap {
       background: white;
