@@ -91,16 +91,27 @@
       margin-bottom: 10px;
     }
 
-    .row {
+        .row {
       display: flex;
-      flex-wrap: nowrap; /* prevent wrapping, force same row */
+      flex-wrap: wrap; /* Allow wrapping on smaller screens */
       gap: 30px;
+      justify-content: center; /* Center items if they don't fill the row */
     }
 
     .col-lg-5, .col-lg-7 {
-      flex: 1 1 50%;
-      min-width: 300px;
+      flex: 1 1 calc(50% - 15px); /* 50% width minus half the gap */
+      box-sizing: border-box; /* Include padding and border in width */
+      min-width: 300px; /* Ensure readability */
     }
+
+    /* Stack columns on small screens */
+    @media (max-width: 768px) {
+      .col-lg-5, .col-lg-7 {
+        flex: 1 1 100%; /* Full width */
+        min-width: unset; /* Remove min-width constraint */
+      }
+    }
+
 
 
     .info-wrap {
