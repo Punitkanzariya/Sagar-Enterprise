@@ -27,6 +27,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .logo img {
@@ -57,6 +59,8 @@
       justify-content: center;
       align-items: center;
       transition: transform 0.3s ease;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     nav a {
@@ -70,7 +74,8 @@
       border-radius: 4px;
     }
 
-    nav a:hover {
+    nav a:hover,
+    nav a.active {
       background-color: #006400;
     }
 
@@ -80,6 +85,8 @@
       gap: 30px;
       padding: 40px 20px;
       background-color: #f8fff8;
+      max-width: 1200px;
+      margin: 0 auto 60px;
     }
 
     .product-card {
@@ -88,21 +95,29 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       padding: 20px;
       text-align: center;
-      transition: transform 0.3s ease;
-    }
-
-    .product-card:hover {
-      transform: translateY(-5px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .product-card img {
       max-width: 100%;
       border-radius: 5px;
+      margin-bottom: 15px;
+      height: 180px;
+      object-fit: cover;
     }
 
     .product-card h3 {
-      margin: 10px 0;
+      margin: 10px 0 5px;
       color: #006400;
+      font-weight: 600;
+    }
+
+    .product-card p {
+      color: #2e7d32;
+      font-weight: 500;
+      margin: 0 0 10px;
     }
 
     .contact-btn {
@@ -111,9 +126,13 @@
       padding: 10px 18px;
       text-decoration: none;
       border-radius: 5px;
-      display: inline-block;
-      margin-top: 10px;
       font-weight: bold;
+      transition: background-color 0.3s ease;
+      margin-top: auto;
+    }
+
+    .contact-btn:hover {
+      background-color: #1e7e34;
     }
 
     footer {
@@ -121,6 +140,7 @@
       color: white;
       text-align: center;
       padding: 15px;
+      font-size: 14px;
     }
 
     /* Mobile Responsive */
@@ -173,6 +193,11 @@
       .logo img {
         width: 80px;
       }
+
+      .products {
+        padding: 20px 15px 40px;
+        gap: 20px;
+      }
     }
   </style>
 </head>
@@ -181,45 +206,45 @@
   <header>
     <div class="header-container">
       <div class="logo">
-        <img src="images/logo.png" alt="Sagar Enterprise Logo" />
+        <a href="index.html"><img src="images/logo.png" alt="Sagar Enterprise Logo" /></a>
       </div>
       <div class="title">Our Products</div>
       <button class="hamburger" id="hamburger">&#9776;</button>
     </div>
   </header>
 
-  <!-- Overlay -->
+  <!-- Overlay for mobile menu -->
   <div class="overlay" id="overlay"></div>
 
   <!-- Navigation -->
   <nav id="navbar">
     <a href="index.html">Home</a>
-    <a href="products.html">Products</a>
+    <a href="products.html" class="active">Products</a>
     <a href="about.html">About Us</a>
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- Product Section -->
-  <section class="products">
+  <!-- Products Section -->
+  <section class="products" aria-label="Product listings">
     <div class="product-card">
-      <img src="images/zatka.jpg" alt="Zatka Machine" />
+      <img src="images/zatka.jpg" alt="Hi-Tech Zatka Machine" />
       <h3>Hi-Tech Zatka Machine</h3>
       <p>Coverage: Up to 75 Acres</p>
-      <a class="contact-btn" href="https://wa.me/917202959339?text=I'm%20interested%20in%20the%20Hi-Tech%20Zatka%20Machine">Inquire on WhatsApp</a>
+      <a class="contact-btn" href="https://wa.me/917202959339" target="_blank" rel="noopener">Inquire on WhatsApp</a>
     </div>
     <div class="product-card">
-      <img src="images/solar-panel.jpg" alt="Solar Panel" />
+      <img src="images/solar-panel.jpg" alt="50W Solar Panel" />
       <h3>50W Solar Panel</h3>
       <p>Mono N-Type Cell | 12V</p>
-      <a class="contact-btn" href="https://wa.me/917202959339?text=I'm%20interested%20in%20the%2050W%20Solar%20Panel">Inquire on WhatsApp</a>
+      <a class="contact-btn" href="https://wa.me/917202959339" target="_blank" rel="noopener">Inquire on WhatsApp</a>
     </div>
     <div class="product-card">
-      <img src="images/insulator.jpg" alt="Fence Insulator" />
+      <img src="images/insulator.jpg" alt="Corner Fence Insulator" />
       <h3>Corner Fence Insulator</h3>
       <p>Heavy Duty Plastic</p>
-      <a class="contact-btn" href="https://wa.me/917202959339?text=I'm%20interested%20in%20the%20Corner%20Fence%20Insulator">Inquire on WhatsApp</a>
+      <a class="contact-btn" href="https://wa.me/917202959339" target="_blank" rel="noopener">Inquire on WhatsApp</a>
     </div>
-    <!-- Add more product cards below as needed -->
+    <!-- Add more product cards as needed -->
   </section>
 
   <footer>
@@ -243,6 +268,7 @@
     hamburger.addEventListener('click', toggleMenu);
     overlay.addEventListener('click', toggleMenu);
 
+    // Close menu on nav link click (mobile)
     document.querySelectorAll('#navbar a').forEach(link => {
       link.addEventListener('click', () => {
         if (isOpen) toggleMenu();
