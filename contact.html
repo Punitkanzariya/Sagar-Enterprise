@@ -7,11 +7,15 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    (function(){
+    (function() {
       emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
     })();
   </script>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
@@ -32,6 +36,16 @@
       margin: 0 auto 10px;
     }
 
+    .hamburger {
+      display: none;
+      font-size: 30px;
+      cursor: pointer;
+      padding: 10px 20px;
+      background: #00695c;
+      color: white;
+      text-align: left;
+    }
+
     nav {
       background: #00695c;
       display: flex;
@@ -41,8 +55,9 @@
 
     nav a {
       color: white;
-      padding: 15px 25px;
+      padding: 15px 20px;
       text-decoration: none;
+      display: inline-block;
       transition: background 0.3s;
     }
 
@@ -50,47 +65,26 @@
       background: #004d40;
     }
 
-    .hamburger {
-      display: none;
-      font-size: 30px;
-      cursor: pointer;
-      text-align: center;
-      padding: 10px;
-      background: #00695c;
-      color: white;
-    }
-
     @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
       nav {
         display: none;
         flex-direction: column;
-        width: 100%;
+        align-items: flex-start;
       }
 
       nav.show {
         display: flex;
       }
-
-      .hamburger {
-        display: block;
-      }
-
-      /* On smaller screens, stack columns vertically and full width */
-      .row {
-        flex-wrap: wrap;
-      }
-      .col-lg-5, .col-lg-7 {
-        flex: 1 1 100% !important;
-        max-width: 100% !important;
-        min-width: auto !important;
-      }
     }
 
     main {
-      padding: 30px;
+      padding: 30px 15px;
       max-width: 1200px;
       margin: auto;
-      overflow-x: auto; /* Allow horizontal scroll if content too wide */
     }
 
     .section-title {
@@ -98,36 +92,30 @@
       margin-bottom: 30px;
     }
 
-    .section-title h2 {
-      margin-bottom: 10px;
-    }
-
     .row {
       display: flex;
-      flex-wrap: nowrap; /* Keep side-by-side on desktop */
+      flex-wrap: wrap;
       gap: 30px;
       justify-content: center;
-      align-items: stretch; /* Make both columns equal height */
     }
 
     .col-lg-5, .col-lg-7 {
-      /* Make both columns equal width */
-      flex: 1 1 0;
-      box-sizing: border-box;
-      min-width: 280px;
+      flex: 1 1 100%;
+      max-width: 100%;
       background: white;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
       padding: 20px;
     }
 
-    /* Contact info column adjustments */
-    .info-wrap {
-      flex: 1 1 auto;
-      display: flex;
-      flex-direction: column;
+    @media (min-width: 769px) {
+      .col-lg-5 {
+        max-width: 40%;
+      }
+
+      .col-lg-7 {
+        max-width: 55%;
+      }
     }
 
     .info-item {
@@ -137,10 +125,9 @@
     }
 
     .info-item i {
-      font-size: 30px;
+      font-size: 28px;
       margin-right: 15px;
       color: #00695c;
-      flex-shrink: 0;
     }
 
     .info-item h3 {
@@ -154,35 +141,25 @@
 
     iframe {
       width: 100%;
-      flex-grow: 1; /* Let map take all remaining height */
+      height: 250px;
       border: 0;
       border-radius: 8px;
-      margin-top: 20px;
-      min-height: 250px;
-    }
-
-    /* Form column adjustments */
-    form {
-      flex: 1 1 auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+      margin-top: 10px;
     }
 
     form label {
-      display: block;
-      margin-bottom: 5px;
       font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
     }
 
     form input, form textarea {
       width: 100%;
       padding: 10px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 16px;
-      box-sizing: border-box;
     }
 
     form textarea {
@@ -194,11 +171,9 @@
       color: white;
       padding: 12px 20px;
       border: none;
-      font-size: 16px;
       border-radius: 6px;
+      font-size: 16px;
       cursor: pointer;
-      transition: background 0.3s;
-      align-self: flex-start;
     }
 
     form button:hover {
@@ -227,17 +202,22 @@
       padding: 20px;
       margin-top: 40px;
     }
+
+    footer a {
+      color: #80cbc4;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">
-      <img src="images/logo.png" alt="Sagar Enterprise Logo" />
+      <img src="images/logo.png" alt="Sagar Enterprise Logo">
     </div>
     <h1>Contact Us</h1>
   </header>
 
-  <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+  <div class="hamburger" onclick="toggleMenu()">☰ Menu</div>
 
   <nav id="navbar">
     <a href="index.html">Home</a>
@@ -247,82 +227,73 @@
   </nav>
 
   <main>
-    <section class="contact section">
-      <div class="section-title">
-        <h2>Contact</h2>
-        <p>Have a question or inquiry? We're here to help. Reach out to us below.</p>
-      </div>
+    <div class="section-title">
+      <h2>Contact</h2>
+      <p>Have a question or inquiry? We're here to help. Reach out to us below.</p>
+    </div>
 
-      <div class="row">
-        <div class="col-lg-5">
-          <div class="info-wrap">
-            <div class="info-item">
-              <i class="bi bi-geo-alt"></i>
-              <div>
-                <h3>Address</h3>
-                <p>Praharsh Platinium, South Bopal, Ahmedabad, Gujarat, India</p>
-              </div>
-            </div>
-            <div class="info-item">
-              <i class="bi bi-telephone"></i>
-              <div>
-                <h3>Call Me</h3>
-                <p><a href="https://wa.me/919624561580" target="_blank">+91 96245 61580</a></p>
-              </div>
-            </div>
-            <div class="info-item">
-              <i class="bi bi-envelope"></i>
-              <div>
-                <h3>Email Me</h3>
-                <p><a href="mailto:punitkanzariya4706@gmail.com">punitkanzariya4706@gmail.com</a></p>
-              </div>
-            </div>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d237.9790582088083!2d69.27140355092041!3d22.089764179632635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39568b46e9e7e6c5%3A0xd3930e8f5bc182fd!2s37QC%2BVH7%2C%20Bhatiya%2C%20Gujarat%20361315!5e1!3m2!1sen!2sin!4v1685125258577!5m2!1sen!2sin"
-              allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="info-item">
+          <i class="bi bi-geo-alt"></i>
+          <div>
+            <h3>Address</h3>
+            <p>Praharsh Platinium, South Bopal, Ahmedabad, Gujarat, India</p>
           </div>
         </div>
-
-        <div class="col-lg-7">
-          <form id="contact-form" onsubmit="sendEmail(event)">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" required />
-
-            <label for="email">Your Email</label>
-            <input type="email" id="email" name="email" required />
-
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" required />
-
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="6" required></textarea>
-
-            <button type="submit">Send Message</button>
-
-            <p id="loading">Sending message...</p>
-            <p id="success-message">Your message has been sent successfully!</p>
-            <p id="error-message">Oops! Something went wrong. Please try again.</p>
-          </form>
+        <div class="info-item">
+          <i class="bi bi-telephone"></i>
+          <div>
+            <h3>Call Me</h3>
+            <p><a href="https://wa.me/919624561580" target="_blank">+91 96245 61580</a></p>
+          </div>
         </div>
+        <div class="info-item">
+          <i class="bi bi-envelope"></i>
+          <div>
+            <h3>Email Me</h3>
+            <p><a href="mailto:punitkanzariya4706@gmail.com">punitkanzariya4706@gmail.com</a></p>
+          </div>
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d237.9790582088083!2d69.27140355092041!3d22.089764179632635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39568b46e9e7e6c5%3A0xd3930e8f5bc182fd!2s37QC%2BVH7%2C%20Bhatiya%2C%20Gujarat%20361315!5e1!3m2!1sen!2sin!4v1685125258577!5m2!1sen!2sin" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-    </section>
+
+      <div class="col-lg-7">
+        <form id="contact-form" onsubmit="sendEmail(event)">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+
+          <button type="submit">Send Message</button>
+
+          <p id="loading">Sending message...</p>
+          <p id="success-message">Your message has been sent successfully!</p>
+          <p id="error-message">Oops! Something went wrong. Please try again.</p>
+        </form>
+      </div>
+    </div>
   </main>
 
   <footer>
     <p>© 2025 Sagar Enterprise. All rights reserved.</p>
     <p style="margin-top: 8px; font-size: 14px; color: #ddd;">
-      Developed by: Punit Kanzariya | 
-      <a href="mailto:punitkanzariya4706@gmail.com" style="color: #80cbc4; text-decoration: none;">punitkanzariya4706@gmail.com</a> | 
-      <a href="https://wa.me/919624561580" target="_blank" style="color: #80cbc4; text-decoration: none;">WhatsApp</a>
+      Developed by: Punit Kanzariya |
+      <a href="mailto:punitkanzariya4706@gmail.com">punitkanzariya4706@gmail.com</a> |
+      <a href="https://wa.me/919624561580" target="_blank">WhatsApp</a>
     </p>
   </footer>
 
-
   <script>
     function toggleMenu() {
-      const nav = document.getElementById("navbar");
-      nav.classList.toggle("show");
+      document.getElementById("navbar").classList.toggle("show");
     }
 
     function sendEmail(e) {
@@ -348,3 +319,4 @@
   </script>
 </body>
 </html>
+
