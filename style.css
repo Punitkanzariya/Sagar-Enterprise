@@ -191,31 +191,30 @@ footer {
 
 
 
-/* 1. Fade-in and slide-up animation keyframes */
-@keyframes fadeInUpSmooth {
+/* Fade in and slide from left */
+@keyframes fadeInLeftToRight {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateX(-30px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 
-/* 2. Base styles for product cards */
 .products-grid .product-card {
-  opacity: 0; /* start hidden */
-  animation: fadeInUpSmooth 0.7s ease forwards; /* animate fade + slide */
-  will-change: transform, opacity; /* optimize for GPU */
-  transition: transform 0.25s ease, box-shadow 0.25s ease; /* smooth hover/tap transition */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* subtle shadow */
-  border-radius: 8px; /* rounded corners for modern look */
-  background: white; /* optional, if needed */
+  opacity: 0;
+  animation: fadeInLeftToRight 0.7s ease forwards;
+  will-change: transform, opacity;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  background: white;
   cursor: default;
 }
 
-/* 3. Stagger animation delays so cards appear sequentially */
+/* Stagger delays for left to right appearance */
 .products-grid .product-card:nth-child(1) {
   animation-delay: 0.1s;
 }
@@ -225,20 +224,17 @@ footer {
 .products-grid .product-card:nth-child(3) {
   animation-delay: 0.5s;
 }
-/* Add more nth-child selectors if you have more cards */
 
-/* 4. Hover effect ONLY on devices that support hover */
-/* This avoids hover styles on touch devices */
+/* Hover effect for desktop */
 @media (hover: hover) and (pointer: fine) {
   .products-grid .product-card:hover {
-    transform: scale(1.05); /* slightly bigger */
-    box-shadow: 0 12px 25px rgba(0, 123, 255, 0.35); /* bright blue glow shadow */
-    cursor: pointer; /* pointer cursor to indicate interactivity */
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0, 123, 255, 0.35);
+    cursor: pointer;
   }
 }
 
-/* 5. Tap effect on touch devices (no hover) */
-/* Slight scale down on active/tap for tactile feedback */
+/* Tap effect on mobile */
 @media (hover: none) and (pointer: coarse) {
   .products-grid .product-card:active {
     transform: scale(0.97);
