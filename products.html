@@ -15,6 +15,10 @@
       ) {
         e.preventDefault();
       }
+        // Block Ctrl+Shift+I
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) {
+        e.preventDefault();
+      }
     });
   </script>
   <meta charset="UTF-8" />
