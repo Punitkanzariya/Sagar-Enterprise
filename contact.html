@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <script src="protect.js"></script>
@@ -293,6 +293,345 @@
   </footer>
 
   <script>
+    function toggleMenu() {
+      document.getElementById("navbar").classList.toggle("show");
+    }
+
+    function sendEmail(e) {
+      e.preventDefault();
+      document.getElementById("loading").style.display = "block";
+      document.getElementById("success-message").style.display = "none";
+      document.getElementById("error-message").style.display = "none";
+
+      emailjs.send("service_fcnzkkj", "template_h37drjl", {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        subject: document.getElementById("subject").value,
+        message: document.getElementById("message").value
+      }).then(function() {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("success-message").style.display = "block";
+        document.getElementById("contact-form").reset();
+      }, function() {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("error-message").style.display = "block";
+      });
+    }
+  </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="protect.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact - Sagar Enterprise</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("-MzE86_nCtPvTbrnR"); // Replace with your EmailJS public key
+    })();
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+    }
+
+    header {
+      background: #004d40;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header .logo img {
+      max-width: 80px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 30px;
+      cursor: pointer;
+      padding: 10px 20px;
+      background: #00695c;
+      color: white;
+      text-align: center;
+    }
+
+    nav {
+      background: #00695c;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      padding: 15px 20px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background: #004d40;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav.show {
+        display: flex;
+      }
+    }
+
+    main {
+      padding: 30px 15px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .col-lg-5, .col-lg-7 {
+      flex: 1 1 100%;
+      max-width: 100%;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+
+    @media (min-width: 769px) {
+      .col-lg-5 {
+        max-width: 40%;
+      }
+
+      .col-lg-7 {
+        max-width: 55%;
+      }
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .info-item i {
+      font-size: 28px;
+      margin-right: 15px;
+      color: #00695c;
+    }
+
+    .info-item h3 {
+      margin: 0 0 5px;
+    }
+
+    .info-item a {
+      color: #00695c;
+      text-decoration: none;
+    }
+
+    iframe {
+      width: 100%;
+      height: 250px;
+      border: 0;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    form label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    form textarea {
+      resize: vertical;
+    }
+
+    form button {
+      background: #00695c;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background: #004d40;
+    }
+
+    #loading, #success-message, #error-message {
+      display: none;
+      font-size: 15px;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    #success-message {
+      color: green;
+    }
+
+    #error-message {
+      color: red;
+    }
+
+    footer {
+      text-align: center;
+      background: #004d40;
+      color: white;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #80cbc4;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header data-aos="fade-down" data-aos-duration="1000">
+    <div class="logo">
+      <img src="images/logo.png" alt="Sagar Enterprise Logo">
+    </div>
+    <h1>Contact Us</h1>
+  </header>
+
+  <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+
+  <nav id="navbar" data-aos="fade-down" data-aos-delay="200">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <div class="section-title" data-aos="fade-up" data-aos-duration="800">
+      <h2>Contact</h2>
+      <p>Have a question or inquiry? We're here to help. Reach out to us below.</p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-5" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
+        <div class="info-item" data-aos="zoom-in" data-aos-delay="400">
+          <i class="bi bi-geo-alt"></i>
+          <div>
+            <h3>Address</h3>
+            <p>Praharsh Platinium, South Bopal, Ahmedabad, Gujarat, India</p>
+          </div>
+        </div>
+        <div class="info-item" data-aos="zoom-in" data-aos-delay="600">
+          <i class="bi bi-telephone"></i>
+          <div>
+            <h3>Call Me</h3>
+            <p><a href="https://wa.me/919624561580" target="_blank">+91 96245 61580</a></p>
+          </div>
+        </div>
+        <div class="info-item" data-aos="zoom-in" data-aos-delay="800">
+          <i class="bi bi-envelope"></i>
+          <div>
+            <h3>Email Me</h3>
+            <p><a href="mailto:punitkanzariya4706@gmail.com">punitkanzariya4706@gmail.com</a></p>
+          </div>
+        </div>
+        <iframe data-aos="fade-up" data-aos-delay="1000" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d237.9790582088083!2d69.27140355092041!3d22.089764179632635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39568b46e9e7e6c5%3A0xd3930e8f5bc182fd!2s37QC%2BVH7%2C%20Bhatiya%2C%20Gujarat%20361315!5e1!3m2!1sen!2sin!4v1685125258577!5m2!1sen!2sin" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <div class="col-lg-7" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+        <form id="contact-form" onsubmit="sendEmail(event)">
+          <label for="name" data-aos="fade-up" data-aos-delay="500">Your Name</label>
+          <input type="text" id="name" name="name" required data-aos="fade-up" data-aos-delay="550">
+
+          <label for="email" data-aos="fade-up" data-aos-delay="600">Your Email</label>
+          <input type="email" id="email" name="email" required data-aos="fade-up" data-aos-delay="650">
+
+          <label for="subject" data-aos="fade-up" data-aos-delay="700">Subject</label>
+          <input type="text" id="subject" name="subject" required data-aos="fade-up" data-aos-delay="750">
+
+          <label for="message" data-aos="fade-up" data-aos-delay="800">Message</label>
+          <textarea id="message" name="message" rows="6" required data-aos="fade-up" data-aos-delay="850"></textarea>
+
+          <button type="submit" data-aos="zoom-in" data-aos-delay="900">Send Message</button>
+
+          <p id="loading">Sending message...</p>
+          <p id="success-message">Your message has been sent successfully!</p>
+          <p id="error-message">Oops! Something went wrong. Please try again.</p>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer data-aos="fade-up" data-aos-duration="800">
+    <p>© 2025 Sagar Enterprise. All rights reserved.</p>
+    <p style="margin-top: 8px; font-size: 14px; color: #ddd;">
+      Developed by: Punit Kanzariya |
+      <a href="mailto:punitkanzariya4706@gmail.com">punitkanzariya4706@gmail.com</a> |
+      <a href="https://wa.me/919624561580" target="_blank">WhatsApp</a>
+    </p>
+  </footer>
+
+  <!-- AOS JavaScript -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1200,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 100
+    });
+
     function toggleMenu() {
       document.getElementById("navbar").classList.toggle("show");
     }
