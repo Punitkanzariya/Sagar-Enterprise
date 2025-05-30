@@ -21,6 +21,11 @@
       box-sizing: border-box;
     }
 
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
@@ -87,21 +92,25 @@
     }
 
     main {
-      padding: 30px 15px;
+      padding: 20px 10px;
       max-width: 1200px;
       margin: auto;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .section-title {
       text-align: center;
       margin-bottom: 30px;
+      padding: 0 10px;
     }
 
     .row {
       display: flex;
       flex-wrap: wrap;
-      gap: 30px;
+      gap: 20px;
       justify-content: center;
+      width: 100%;
     }
 
     .col-lg-5, .col-lg-7 {
@@ -111,15 +120,45 @@
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       padding: 20px;
+      box-sizing: border-box;
+      width: 100%;
     }
 
     @media (min-width: 769px) {
+      main {
+        padding: 30px 15px;
+      }
+      
+      .row {
+        gap: 30px;
+      }
+      
       .col-lg-5 {
         max-width: 40%;
+        flex: 0 0 40%;
       }
 
       .col-lg-7 {
         max-width: 55%;
+        flex: 0 0 55%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      main {
+        padding: 15px 5px;
+      }
+      
+      .row {
+        gap: 15px;
+        margin: 0;
+      }
+      
+      .col-lg-5, .col-lg-7 {
+        margin: 0;
+        padding: 15px;
+        width: calc(100% - 10px);
+        max-width: none;
       }
     }
 
@@ -165,6 +204,8 @@
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 16px;
+      box-sizing: border-box;
+      max-width: 100%;
     }
 
     form textarea {
