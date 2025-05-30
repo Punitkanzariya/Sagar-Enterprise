@@ -31,7 +31,9 @@
       <p>High-quality products tailored to your needs.</p>
     </section>
 
-    <div class="products-grid">
+    <div class="products-grid" data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000">
 
       <div class="product-card">
         <img src="images/zatka.jpg" alt="Hi-Tech Zatka Machine" />
@@ -70,6 +72,10 @@
       const nav = document.getElementById("navbar");
       nav.classList.toggle("show");
     }
+  </script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
   </script>
 </body>
 </html>
