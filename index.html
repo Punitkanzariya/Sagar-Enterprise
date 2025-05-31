@@ -592,22 +592,22 @@
     <!-- Stats Section -->
     <section class="stats-section">
       <div class="stat-card" data-aos="flip-up" data-aos-duration="800" data-aos-delay="100">
-        <div class="stat-number">500+</div>
+        <div class="stat-number" data-count="500">0+</div>
         <div class="stat-label">Happy Customers</div>
       </div>
 
       <div class="stat-card" data-aos="flip-up" data-aos-duration="800" data-aos-delay="200">
-        <div class="stat-number">75</div>
+        <div class="stat-number" data-count="75">0</div>
         <div class="stat-label">Acres Coverage</div>
       </div>
 
       <div class="stat-card" data-aos="flip-up" data-aos-duration="800" data-aos-delay="300">
-        <div class="stat-number">24/7</div>
+        <div class="stat-number" data-count="24">24/7</div>
         <div class="stat-label">Customer Support</div>
       </div>
 
       <div class="stat-card" data-aos="flip-up" data-aos-duration="800" data-aos-delay="400">
-        <div class="stat-number">10+</div>
+        <div class="stat-number" data-count="10">0+</div>
         <div class="stat-label">Years Experience</div>
       </div>
     </section>
@@ -651,6 +651,53 @@
       once: true,
       offset: 50,
       easing: 'ease-out-cubic'
+    });
+
+    // Counter Animation Function
+    function animateCounter(element, target, duration = 2000, suffix = '') {
+      let start = 0;
+      const increment = target / (duration / 16); // 60 FPS
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+          element.textContent = target + suffix;
+          clearInterval(timer);
+        } else {
+          element.textContent = Math.floor(start) + suffix;
+        }
+      }, 16);
+    }
+
+    // Intersection Observer for Counter Animation
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const element = entry.target;
+          const target = parseInt(element.getAttribute('data-count'));
+          
+          // Determine suffix based on original content
+          let suffix = '';
+          if (element.textContent.includes('+')) suffix = '+';
+          if (element.textContent.includes('/7')) suffix = '/7';
+          
+          // Start counter animation with delay
+          setTimeout(() => {
+            animateCounter(element, target, 2000, suffix);
+          }, 500);
+          
+          counterObserver.unobserve(element);
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    // Observe all stat numbers
+    document.addEventListener('DOMContentLoaded', function() {
+      const statNumbers = document.querySelectorAll('.stat-number[data-count]');
+      statNumbers.forEach(stat => {
+        counterObserver.observe(stat);
+      });
     });
 
     // Add smooth scrolling for anchor links
