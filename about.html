@@ -340,11 +340,22 @@
       font-size: 3rem;
       color: white;
       font-weight: bold;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .team-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
     }
 
     /* Special styling for developer card */
     .team-card.developer .team-avatar {
       background: linear-gradient(135deg, #1976d2, #1565c0);
+      border: 3px solid #1976d2;
+      box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3);
     }
 
     .team-card.developer .role {
@@ -586,7 +597,7 @@
         </div>
 
         <div class="content-card" data-aos="fade-up" data-aos-delay="200">
-          <i class="bi bi-target icon"></i>
+          <i class="bi bi-lightning-fill icon"></i>
           <h3>Our Mission</h3>
           <p>Delivering high-quality solar and electrical solutions through innovation, reliability, and exceptional customer service. We are committed to promoting renewable energy adoption across Dwarka and beyond.</p>
         </div>
@@ -614,11 +625,11 @@
 
       <div class="stats-grid">
         <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
-          <span class="stat-number" data-target="500">0</span>
+          <span class="stat-number" data-target="500" data-suffix="+">0</span>
           <span class="stat-label">Happy Customers</span>
         </div>
         <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
-          <span class="stat-number" data-target="5" data-suffix="+">0</span>
+          <span class="stat-number" data-target="10" data-suffix="+">0</span>
           <span class="stat-label">Years Experience</span>
         </div>
         <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
@@ -696,7 +707,9 @@
         </div>
 
         <div class="team-card developer" data-aos="flip-left" data-aos-delay="400">
-          <div class="team-avatar">PK</div>
+          <div class="team-avatar">
+            <img src="images/punit-photo.jpg" alt="Punit Kanzariya" onerror="this.style.display='none'; this.parentNode.innerHTML='PK';">
+          </div>
           <h4>Punit Kanzariya</h4>
           <div class="role">Web Developer</div>
           <p>Crafting digital experiences and maintaining the online presence of Sagar Enterprise. Specializing in modern web technologies and user-friendly designs.</p>
