@@ -292,14 +292,23 @@
       text-decoration: none;
     }
 
-    .whatsapp-container {
+        .floating-container {
       position: fixed;
       bottom: 20px;
       right: 20px;
       z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 15px;
     }
 
-    .whatsapp-btn {
+    .floating-wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    .floating-btn {
       display: none;
       background-color: #25D366;
       color: white;
@@ -313,21 +322,17 @@
       transition: all 0.3s ease;
     }
 
-    .whatsapp-icon {
+    .floating-wrapper:hover .floating-btn {
+      display: inline-block;
+    }
+
+    .icon-img {
       width: 50px;
       height: 50px;
       border-radius: 10px;
       cursor: pointer;
     }
 
-    .whatsapp-wrapper {
-      display: flex;
-      align-items: center;
-    }
-
-    .whatsapp-wrapper:hover .whatsapp-btn {
-      display: inline-block;
-    }
 
   </style>
   <link href="images/logo2.png" rel="icon">
@@ -410,15 +415,28 @@
       </div>
     </div>
 
-    <div class="whatsapp-container">
-      <div class="whatsapp-wrapper">
-        <a href="https://wa.me/917698004045" target="_blank" class="whatsapp-btn">
-          WhatsApp us
+     <div class="floating-container">
+
+      <!-- Developer WhatsApp Button -->
+      <div class="floating-wrapper">
+        <a href="https://wa.me/919888888888?text=Hi%2C%20I%20am%20interested%20in%20developer%20services" target="_blank" class="floating-btn">
+          Developer
         </a>
-        <a href="https://wa.me/917698004045" target="_blank">
-          <img src="images/whatsapp-icon.png" alt="WhatsApp" class="whatsapp-icon">
+        <a href="https://wa.me/919888888888?text=Hi%2C%20I%20am%20interested%20in%20developer%20services" target="_blank">
+          <img src="images/dev-icon.jpg" alt="Developer" class="icon-img">
         </a>
       </div>
+
+      <!-- General WhatsApp Button -->
+      <div class="floating-wrapper">
+        <a href="https://wa.me/917698004045?text=Hello%2C%20I%20need%20some%20help" target="_blank" class="floating-btn">
+          WhatsApp us
+        </a>
+        <a href="https://wa.me/917698004045?text=Hello%2C%20I%20need%20some%20help" target="_blank">
+          <img src="images/whatsapp-icon.png" alt="WhatsApp" class="icon-img">
+        </a>
+      </div>
+
     </div>
 
   </main>
