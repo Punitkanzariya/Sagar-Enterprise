@@ -291,6 +291,44 @@
       color: #80cbc4;
       text-decoration: none;
     }
+
+    .whatsapp-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+
+    .whatsapp-btn {
+      display: none;
+      background-color: #25D366;
+      color: white;
+      border-radius: 20px;
+      padding: 10px 20px;
+      margin-right: 10px;
+      text-decoration: none;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .whatsapp-wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    .whatsapp-wrapper:hover .whatsapp-btn {
+      display: inline-block;
+    }
+
   </style>
   <link href="images/logo2.png" rel="icon">
   <link href="images/logo2.png" rel="apple-touch-icon">
@@ -371,6 +409,18 @@
         </form>
       </div>
     </div>
+
+    <div class="whatsapp-container">
+      <div class="whatsapp-wrapper">
+        <a href="https://wa.me/917698004045" target="_blank" class="whatsapp-btn">
+          WhatsApp us
+        </a>
+        <a href="https://wa.me/917698004045" target="_blank">
+          <img src="images/whatsapp-icon.png" alt="WhatsApp" class="whatsapp-icon">
+        </a>
+      </div>
+    </div>
+
   </main>
 
   <footer data-aos="fade-up" data-aos-duration="800">
