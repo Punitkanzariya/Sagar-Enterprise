@@ -99,7 +99,13 @@
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
-    /* === Navigation === */
+    /* === Navigation Container === */
+    .nav-container {
+      position: relative;
+      background: #00695c;
+    }
+
+    /* === Hamburger Menu (Mobile) === */
     .hamburger {
       display: block;
       font-size: 24px;
@@ -109,6 +115,8 @@
       background: #00695c;
       color: white;
       transition: background 0.3s ease;
+      border: none;
+      width: 100%;
       position: relative;
       z-index: 1000;
     }
@@ -117,20 +125,36 @@
       background: #004d40;
     }
 
+    .hamburger:focus {
+      outline: none;
+    }
+
+    /* === Navigation Menu === */
     nav {
       background: #00695c;
       display: none;
       flex-direction: column;
       width: 100%;
-      position: absolute;
-      top: 100%;
-      left: 0;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       z-index: 999;
+      overflow: hidden;
+      transition: all 0.3s ease;
     }
 
     nav.show {
       display: flex;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     nav a {
@@ -140,12 +164,18 @@
       transition: all 0.3s ease;
       font-weight: 600;
       border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: block;
+    }
+
+    nav a:last-child {
+      border-bottom: none;
     }
 
     nav a:hover,
     nav a.active {
       background: #004d40;
       padding-left: 30px;
+      transform: translateX(5px);
     }
 
     /* === Main Container === */
@@ -526,24 +556,14 @@
         max-width: 100px;
       }
 
+      /* Hide hamburger on desktop */
       .hamburger {
         display: none;
-        font-size: 30px;
-        cursor: pointer;
-        text-align: center;
-        padding: 10px;
-        background: #00695c;
-        color: white;
-        position: fixed;
-        top: 1rem;
-        right: 1rem;
-        z-index: 1001;
-        border-radius: 5px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
       }
 
+      /* Show navigation horizontally on desktop */
       nav {
-        display: flex;
+        display: flex !important;
         flex-direction: row;
         justify-content: center;
         position: static;
@@ -745,14 +765,18 @@
     <h1>About Us</h1>
   </header>
 
-  <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+  <div class="nav-container">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle Menu">
+      <i class="bi bi-list"></i>
+    </button>
 
-  <nav id="navbar">
-    <a href="index.html">Home</a>
-    <a href="products.html">Products</a>
-    <a href="about.html" class="active">About Us</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+    <nav id="navbar">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html" class="active">About Us</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 
   <main>
     <!-- Our Story Section -->
