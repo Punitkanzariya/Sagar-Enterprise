@@ -2,32 +2,40 @@
 <html lang="en">
 <head>
   <style>
-    .whatsapp-container {
-      position: relative;
-      display: inline-block;
+     .whatsapp-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
     }
 
     .whatsapp-btn {
       display: none;
-      position: absolute;
-      top: 0;
-      left: 60px;
       background-color: #25D366;
       color: white;
       border-radius: 20px;
       padding: 10px 20px;
+      margin-right: 10px;
       text-decoration: none;
       font-family: Arial, sans-serif;
+      font-size: 16px;
       white-space: nowrap;
+      transition: all 0.3s ease;
     }
 
     .whatsapp-icon {
       width: 50px;
       height: 50px;
+      border-radius: 10px;
       cursor: pointer;
     }
 
-    .whatsapp-container:hover .whatsapp-btn {
+    .whatsapp-wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    .whatsapp-wrapper:hover .whatsapp-btn {
       display: inline-block;
     }
   </style>
