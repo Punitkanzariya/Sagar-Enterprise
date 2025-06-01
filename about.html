@@ -342,6 +342,15 @@
       font-weight: bold;
     }
 
+    /* Special styling for developer card */
+    .team-card.developer .team-avatar {
+      background: linear-gradient(135deg, #1976d2, #1565c0);
+    }
+
+    .team-card.developer .role {
+      color: #1976d2;
+    }
+
     .team-card h4 {
       color: #004d40;
       margin-bottom: 10px;
@@ -357,6 +366,44 @@
     .team-card p {
       color: #666;
       line-height: 1.6;
+    }
+
+    /* Contact links in team cards */
+    .team-contact {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .team-contact a {
+      color: #00695c;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      padding: 8px;
+      border-radius: 50%;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 35px;
+    }
+
+    .team-contact a:hover {
+      background: #00695c;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .team-card.developer .team-contact a {
+      color: #1976d2;
+    }
+
+    .team-card.developer .team-contact a:hover {
+      background: #1976d2;
+      color: white;
     }
 
     /* === CTA Section === */
@@ -493,6 +540,10 @@
       .cta-section h2 {
         font-size: 1.8rem;
       }
+
+      .team-contact {
+        flex-wrap: wrap;
+      }
     }
   </style>
 </head>
@@ -563,11 +614,11 @@
 
       <div class="stats-grid">
         <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
-          <span class="stat-number" data-target="500" data-suffix="+">0</span>
+          <span class="stat-number" data-target="500">0</span>
           <span class="stat-label">Happy Customers</span>
         </div>
         <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
-          <span class="stat-number" data-target="10" data-suffix="+">0</span>
+          <span class="stat-number" data-target="5" data-suffix="+">0</span>
           <span class="stat-label">Years Experience</span>
         </div>
         <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
@@ -624,8 +675,8 @@
 
       <div class="team-grid">
         <div class="team-card" data-aos="flip-left" data-aos-delay="100">
-          <div class="team-avatar">SN</div>
-          <h4>Sagar Nakum</h4>
+          <div class="team-avatar">SE</div>
+          <h4>Sagar Patel</h4>
           <div class="role">Founder & CEO</div>
           <p>Leading Sagar Enterprise with a vision for sustainable energy and customer excellence. Bringing over a decade of experience in the renewable energy sector.</p>
         </div>
@@ -642,6 +693,21 @@
           <h4>Customer Support</h4>
           <div class="role">Service Team</div>
           <p>Dedicated to providing exceptional customer service and support throughout your solar journey, from initial consultation to ongoing maintenance.</p>
+        </div>
+
+        <div class="team-card developer" data-aos="flip-left" data-aos-delay="400">
+          <div class="team-avatar">PK</div>
+          <h4>Punit Kanzariya</h4>
+          <div class="role">Web Developer</div>
+          <p>Crafting digital experiences and maintaining the online presence of Sagar Enterprise. Specializing in modern web technologies and user-friendly designs.</p>
+          <div class="team-contact">
+            <a href="mailto:punitkanzariya4706@gmail.com" title="Email">
+              <i class="bi bi-envelope"></i>
+            </a>
+            <a href="https://wa.me/919624561580" target="_blank" title="WhatsApp">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+          </div>
         </div>
       </div>
     </section>
