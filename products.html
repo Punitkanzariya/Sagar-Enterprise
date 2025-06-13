@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-KCQRTRMM');</script>
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KCQRTRMM');</script>
   <!-- End Google Tag Manager -->
   <!-- Google Search Console Verification -->
   <meta name="google-site-verification" content="c5wqqvljNLtWs-Y4wO0iCSnqaLrhL6Gwf1jaQhjBxSE" />
@@ -14,7 +18,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXTB7ZFG97"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-PXTB7ZFG97');
@@ -22,13 +26,16 @@
   <!-- Essential Meta Tags -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Discover high-quality solar and electrical products by Sagar Enterprise. Browse our extensive range of reliable, energy-efficient solutions." />
-  <meta name="keywords" content="Sagar Enterprise, solar products, electrical items, solar panels, energy solutions, LED lights, Dwarka Gujarat" />
+  <meta name="description"
+    content="Discover high-quality solar and electrical products by Sagar Enterprise. Browse our extensive range of reliable, energy-efficient solutions." />
+  <meta name="keywords"
+    content="Sagar Enterprise, solar products, electrical items, solar panels, energy solutions, LED lights, Dwarka Gujarat" />
   <meta name="author" content="Sagar Enterprise" />
 
   <!-- Social Sharing (Open Graph for Facebook, LinkedIn, etc.) -->
   <meta property="og:title" content="Products - Sagar Enterprise" />
-  <meta property="og:description" content="Explore our full range of solar and electrical products with top-notch quality and service." />
+  <meta property="og:description"
+    content="Explore our full range of solar and electrical products with top-notch quality and service." />
   <meta property="og:url" content="https://sagarenterprisedwarka.netlify.app/products" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://sagarenterprisedwarka.netlify.app/images/logo.png" />
@@ -36,7 +43,8 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Products - Sagar Enterprise" />
-  <meta name="twitter:description" content="Explore our range of high-quality solar and electrical products at Sagar Enterprise." />
+  <meta name="twitter:description"
+    content="Explore our range of high-quality solar and electrical products at Sagar Enterprise." />
   <meta name="twitter:image" content="https://sagarenterprisedwarka.netlify.app/images/logo.png" />
 
   <!-- Title and Styles -->
@@ -48,72 +56,168 @@
   <link href="images/logo2.png" rel="apple-touch-icon">
 
   <style>
-        /* === Global Styles === */
-    body {
-      font-family: 'Segoe UI', sans-serif;
+    /* === Reset and Base Styles === */
+    * {
       margin: 0;
       padding: 0;
-      background: #f5f5f5;
+      box-sizing: border-box;
     }
 
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* === Header === */
     header {
-      background: #004d40;
+      background: linear-gradient(135deg, #004d40, #00695c);
       color: white;
-      padding: 20px;
+      padding: 20px 15px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+      opacity: 0.3;
     }
 
     header .logo img {
       max-width: 80px;
       display: block;
-      margin: 0 auto 10px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 1;
     }
 
-    /* === Navigation === */
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    /* === Navigation Container === */
+    .nav-container {
+      position: relative;
+      background: #00695c;
+    }
+
+    /* === Hamburger Menu (Mobile) === */
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      text-align: center;
+      padding: 15px;
+      background: #00695c;
+      color: white;
+      transition: background 0.3s ease;
+      border: none;
+      width: 100%;
+      position: relative;
+      z-index: 1000;
+    }
+
+    .hamburger:hover {
+      background: #004d40;
+    }
+
+    .hamburger:focus {
+      outline: none;
+    }
+
+    /* === Navigation Menu === */
     nav {
       background: #00695c;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      width: 100%;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      overflow: hidden;
+      transition: all 0.3s ease;
     }
 
     nav a {
       color: white;
       padding: 15px 25px;
       text-decoration: none;
-      transition: background 0.3s;
+      transition: all 0.3s ease;
       font-weight: 600;
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #004d40;
+      transition: all 0.3s ease;
+      z-index: -1;
+    }
+
+    nav a:hover::before,
+    nav a.active::before {
+      left: 0;
     }
 
     nav a:hover,
     nav a.active {
-      background: #004d40;
+      transform: translateY(-2px);
     }
 
-    /* Hamburger menu (mobile) */
-    .hamburger {
-      display: none;
-      font-size: 30px;
-      cursor: pointer;
-      text-align: center;
-      padding: 10px;
-      background: #00695c;
-      color: white;
-    }
-
+    /* === Mobile Navigation Styles === */
     @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
       nav {
         display: none;
         flex-direction: column;
+        position: static;
         width: 100%;
       }
 
       nav.show {
         display: flex;
+        animation: slideDown 0.3s ease;
       }
 
-      .hamburger {
-        display: block;
+      nav a {
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: left;
+      }
+
+      nav a:last-child {
+        border-bottom: none;
+      }
+
+      nav a:hover,
+      nav a.active {
+        background: #004d40;
+        padding-left: 30px;
+        transform: translateX(5px);
       }
 
       .row {
@@ -128,6 +232,18 @@
       }
     }
 
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     /* === Main Container === */
     main {
       padding: 30px;
@@ -139,87 +255,148 @@
     /* === Section Titles === */
     .section-title {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
+      padding: 2rem 1rem;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
     }
 
     .section-title h2 {
-      margin-bottom: 10px;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
       color: #004d40;
+      font-weight: 700;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     }
 
-    /* === Products Grid === */
+    .section-title p {
+      font-size: 1.2rem;
+      color: #00695c;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* === Enhanced Products Grid === */
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
-      padding: 10px;
+      padding: 20px 10px;
+      margin-top: 2rem;
     }
 
-    /* UPDATED: Product Card Styles for AOS */
+    /* === Enhanced Product Card Styles === */
     .product-card {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
-      will-change: transform;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      /* REMOVED: Custom animation styles to let AOS handle animations */
+      padding: 25px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 2px solid transparent;
+      position: relative;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent, rgba(0, 105, 92, 0.05), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .product-card:hover::before {
+      opacity: 1;
     }
 
     .product-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 105, 92, 0.2);
+      border-color: #00695c;
     }
 
     .product-card img {
       width: 100%;
       max-height: 280px;
       object-fit: cover;
-      border-radius: 6px;
-      margin-bottom: 15px;
-      transition: transform 0.3s ease;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
 
     .product-card:hover img {
       transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: #00695c;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .product-card h3 {
-      margin: 0 0 10px;
+      margin: 0 0 15px;
+      color: #004d40;
+      font-size: 1.4rem;
+      text-align: center;
+      font-weight: 600;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .product-card h4 {
+      margin: 0 0 15px;
       color: #00695c;
       font-size: 1.25rem;
       text-align: center;
+      font-weight: 600;
     }
 
     .product-card p {
-      margin: 0 0 20px;
+      margin: 0 0 25px;
       color: #00796b;
       font-weight: 500;
       text-align: center;
       font-size: 1rem;
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     .contact-btn {
-      background: #00695c;
+      background: linear-gradient(135deg, #00695c, #004d40);
       color: #fff;
-      padding: 12px 24px;
+      padding: 12px 30px;
       border: none;
-      border-radius: 6px;
+      border-radius: 25px;
       text-decoration: none;
       font-weight: 600;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
       text-align: center;
       display: inline-block;
+      box-shadow: 0 5px 15px rgba(0, 105, 92, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
     }
 
     .contact-btn:hover {
-      background: #004d40;
+      background: linear-gradient(135deg, #004d40, #00251a);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 105, 92, 0.4);
     }
 
     /* === Contact Section === */
@@ -236,62 +413,23 @@
       flex: 1 1 0;
       box-sizing: border-box;
       min-width: 280px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       display: flex;
       flex-direction: column;
-      padding: 20px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease;
     }
 
-    /* === Footer === */
-    footer {
-      text-align: center;
-      background: #004d40;
-      color: white;
-      padding: 20px;
-      margin-top: 40px;
+    .col-lg-5:hover,
+    .col-lg-7:hover {
+      transform: translateY(-5px);
     }
 
-    /* REMOVED: Custom animation keyframes and styles since AOS handles this */
-    /* The following styles have been removed to prevent conflicts with AOS:
-      - @keyframes fadeInLeftToRight
-      - .products-grid .product-card opacity and animation styles
-      - nth-child animation delays
-    */
-
-    /* Keep hover effects for desktop */
-    @media (hover: hover) and (pointer: fine) {
-      .products-grid .product-card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 12px 25px rgba(0, 123, 255, 0.35);
-        cursor: pointer;
-      }
-    }
-
-    /* Tap effect on mobile */
-    @media (hover: none) and (pointer: coarse) {
-      .products-grid .product-card:active {
-        transform: scale(0.97);
-      }
-    }
-
-    /* OPTIONAL: Custom AOS animation overrides */
-    /* You can customize AOS animations with these classes */
-    [data-aos="fade-up"] {
-      transform: translate3d(0, 40px, 0);
-    }
-
-    [data-aos="fade-up"].aos-animate {
-      transform: translate3d(0, 0, 0);
-    }
-
-    /* Custom timing for better visual flow */
-    [data-aos] {
-      transition-timing-function: ease-out;
-    }
-
-        .floating-container {
+    /* === Floating WhatsApp Buttons === */
+    .floating-container {
       position: fixed;
       bottom: 20px;
       right: 20px;
@@ -309,36 +447,225 @@
 
     .floating-btn {
       display: none;
-      background-color: #25D366;
+      background: linear-gradient(135deg, #25D366, #20B358);
       color: white;
-      border-radius: 20px;
-      padding: 10px 20px;
-      margin-right: 10px;
+      border-radius: 25px;
+      padding: 12px 25px;
+      margin-right: 15px;
       text-decoration: none;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       font-size: 16px;
+      font-weight: 600;
       white-space: nowrap;
       transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
     }
 
     .floating-wrapper:hover .floating-btn {
       display: inline-block;
+      animation: slideInRight 0.3s ease;
+    }
+
+    .floating-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     .icon-img {
-      width: 50px;
-      height: 50px;
-      border-radius: 10px;
+      width: 55px;
+      height: 55px;
+      border-radius: 15px;
       cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
 
+    .icon-img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    /* === Footer === */
+    footer {
+      text-align: center;
+      background: linear-gradient(135deg, #004d40, #00251a);
+      color: white;
+      padding: 30px 20px;
+      margin-top: 50px;
+      box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    footer a {
+      color: #80cbc4;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #a7ffeb;
+    }
+
+    /* === Desktop Responsive Design === */
+    @media (min-width: 769px) {
+      header {
+        padding: 30px 20px;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      header .logo img {
+        max-width: 100px;
+      }
+
+      main {
+        padding: 40px 30px;
+      }
+
+      .section-title h2 {
+        font-size: 3rem;
+      }
+
+      .section-title p {
+        font-size: 1.3rem;
+      }
+    }
+
+    /* === Mobile Responsive Adjustments === */
+    @media (max-width: 768px) {
+      main {
+        padding: 20px 15px;
+      }
+
+      .section-title {
+        padding: 1.5rem 1rem;
+        margin-bottom: 30px;
+      }
+
+      .section-title h2 {
+        font-size: 2rem;
+      }
+
+      .section-title p {
+        font-size: 1.1rem;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        padding: 10px 5px;
+      }
+
+      .product-card {
+        padding: 20px;
+      }
+
+      .product-card h3 {
+        font-size: 1.2rem;
+      }
+
+      .col-lg-5,
+      .col-lg-7 {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-container {
+        bottom: 15px;
+        right: 15px;
+      }
+
+      .icon-img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .floating-btn {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+    }
+
+    /* === Enhanced Hover Effects for Desktop === */
+    @media (hover: hover) and (pointer: fine) {
+      .product-card:hover {
+        cursor: pointer;
+      }
+
+      .product-card:hover .contact-btn {
+        background: linear-gradient(135deg, #004d40, #00251a);
+      }
+    }
+
+    /* === Touch Effects for Mobile === */
+    @media (hover: none) and (pointer: coarse) {
+      .product-card:active {
+        transform: scale(0.98);
+      }
+
+      .contact-btn:active {
+        transform: scale(0.95);
+      }
+    }
+
+    /* === AOS Animation Compatibility === */
+    [data-aos] {
+      transition-timing-function: ease-out;
+    }
+
+    [data-aos="fade-up"] {
+      transform: translate3d(0, 40px, 0);
+    }
+
+    [data-aos="fade-up"].aos-animate {
+      transform: translate3d(0, 0, 0);
+    }
+
+    /* === Loading Animation === */
+    @keyframes shimmer {
+      0% {
+        background-position: -200px 0;
+      }
+
+      100% {
+        background-position: calc(200px + 100%) 0;
+      }
+    }
+
+    .loading {
+      animation: shimmer 1.5s ease-in-out infinite;
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200px 100%;
+    }
   </style>
 </head>
 
 <body>
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQRTRMM"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQRTRMM" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <header>
     <div class="logo">
@@ -368,70 +695,80 @@
         <img src="images/zatka.jpg" alt="Hi-Tech Zatka Machine" />
         <h3>Zatka Machine</h3>
         <p>Coverage: Up to 75 Acres | Output: 8500V | Solar & Battery Compatible</p>
-        <a href="https://wa.me/917698004045?text=I%20am%20interested%20in%20the%20Zatka%20Machine.%20Please%20share%20more%20details." target="_blank" class="contact-btn" rel="noopener">Inquire on WhatsApp</a>
+        <a href="https://wa.me/917698004045?text=I%20am%20interested%20in%20the%20Zatka%20Machine.%20Please%20share%20more%20details."
+          target="_blank" class="contact-btn" rel="noopener">Inquire on WhatsApp</a>
       </div>
 
       <div class="product-card" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="3000">
         <img src="images/solar.jpeg" alt="50W Solar Panel" />
         <h3>Solar Panel (50W)</h3>
         <p>Mono N-Type Cell | 12V Output | High Efficiency</p>
-        <a href="https://wa.me/917698004045?text=I%20am%20interested%20in%20the%2050W%20Solar%20Panel.%20Please%20share%20more%20details." target="_blank" class="contact-btn" rel="noopener">Inquire on WhatsApp</a>
+        <a href="https://wa.me/917698004045?text=I%20am%20interested%20in%20the%2050W%20Solar%20Panel.%20Please%20share%20more%20details."
+          target="_blank" class="contact-btn" rel="noopener">Inquire on WhatsApp</a>
       </div>
 
       <div class="product-card" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="4000">
         <img src="images/ins.jpeg" alt="Corner Fence Insulator" />
         <h3>Corner Fence Insulator</h3>
         <p>Heavy-Duty Plastic | UV Resistant | Easy Installation</p>
-        <a href="https://wa.me/917698004045?text=I%20am%20interested%20in%20the%20Corner%20Fence%20Insulator.%20Please%20share%20more%20details." target="_blank" class="contact-btn" rel="noopener">Inquire on WhatsApp</a>
+        <a href="https://wa.me/917698004045?text=I%20am%20interested%20in%20the%20Corner%20Fence%20Insulator.%20Please%20share%20more%20details."
+          target="_blank" class="contact-btn" rel="noopener">Inquire on WhatsApp</a>
       </div>
 
       <div class="product-card" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="5000">
         <img src="images/inverter.jpeg" alt="12V Solar Inverter" />
         <h3>Inverter</h3>
         <p>600VA–1500VA | Pure Sine Wave | Ideal for Fans, Lights, and TV Backup</p>
-        <a href="https://wa.me/917698004045?text=I%20am%20interested%20in%20the%20Inverter.%20Please%20share%20more%20details." target="_blank" class="contact-btn" rel="noopener">Inquire on WhatsApp</a>
+        <a href="https://wa.me/917698004045?text=I%20am%20interested%20in%20the%20Inverter.%20Please%20share%20more%20details."
+          target="_blank" class="contact-btn" rel="noopener">Inquire on WhatsApp</a>
       </div>
 
       <div class="product-card" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="6000">
         <img src="images/battery.jpg" alt="12V Battery for Solar Zatka" /><br><br><br>
         <h3>Battery</h3>
         <p>12V, 26Ah | Deep Cycle Battery | Long Backup for Zatka</p>
-        <a href="https://wa.me/917698004045?text=I%20am%20interested%20in%20the%20Battery.%20Please%20share%20more%20details." target="_blank" class="contact-btn" rel="noopener">Inquire on WhatsApp</a>
+        <a href="https://wa.me/917698004045?text=I%20am%20interested%20in%20the%20Battery.%20Please%20share%20more%20details."
+          target="_blank" class="contact-btn" rel="noopener">Inquire on WhatsApp</a>
       </div>
 
       <div class="product-card" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="7000">
         <img src="images/battery1.jpeg" alt="Inverter Battery for Home" />
         <h3>Inverter Battery</h3>
         <p>12V, 150Ah | Tubular Battery | Long Backup | Maintenance-Free | For Home Inverters</p>
-        <a href="https://wa.me/917698004045?text=I%20am%20interested%20in%20the%20Inverter%20Battery%20for%20Home.%20Please%20share%20more%20details." target="_blank" class="contact-btn" rel="noopener">Inquire on WhatsApp</a>
+        <a href="https://wa.me/917698004045?text=I%20am%20interested%20in%20the%20Inverter%20Battery%20for%20Home.%20Please%20share%20more%20details."
+          target="_blank" class="contact-btn" rel="noopener">Inquire on WhatsApp</a>
       </div>
 
       <div class="product-card" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="7000">
         <img src="images/battery1.jpeg" alt="Inverter Battery for Home" />
         <h3>Spray Pump</h3>
         <p>12V, 150Ah | Tubular Battery | Long Backup | Maintenance-Free | For Home Inverters</p>
-        <a href="https://wa.me/917698004045?text=I%20am%20interested%20in%20the%20Spray%20Pump%20for%20Farm.%20Please%20share%20more%20details." target="_blank" class="contact-btn" rel="noopener">Inquire on WhatsApp</a>
+        <a href="https://wa.me/917698004045?text=I%20am%20interested%20in%20the%20Spray%20Pump%20for%20Farm.%20Please%20share%20more%20details."
+          target="_blank" class="contact-btn" rel="noopener">Inquire on WhatsApp</a>
       </div>
 
-      
+
       <!-- Add more product cards here as needed -->
     </div>
 
-     <div class="floating-container">
+    <div class="floating-container">
 
       <!-- Developer WhatsApp Button -->
       <div class="floating-wrapper">
-        <a href="https://wa.me/919624561580?text=Hi%2C%20I%20am%20interested%20in%20developer%20services" target="_blank" class="floating-btn">
+        <a href="https://wa.me/919624561580?text=Hi%2C%20I%20am%20interested%20in%20developer%20services"
+          target="_blank" class="floating-btn">
           Developer
         </a>
-        <a href="https://wa.me/919624561580?text=Hi%2C%20I%20am%20interested%20in%20developer%20services" target="_blank">
+        <a href="https://wa.me/919624561580?text=Hi%2C%20I%20am%20interested%20in%20developer%20services"
+          target="_blank">
           <img src="images/dev-icon.png" alt="Developer" class="icon-img">
         </a>
       </div>
 
       <!-- General WhatsApp Button -->
       <div class="floating-wrapper">
-        <a href="https://wa.me/917698004045?text=Hello%2C%20I%20need%20some%20help" target="_blank" class="floating-btn">
+        <a href="https://wa.me/917698004045?text=Hello%2C%20I%20need%20some%20help" target="_blank"
+          class="floating-btn">
           WhatsApp us
         </a>
         <a href="https://wa.me/917698004045?text=Hello%2C%20I%20need%20some%20help" target="_blank">
@@ -446,12 +783,13 @@
   <footer>
     <p>© 2025 Sagar Enterprise. All rights reserved.</p>
     <p style="margin-top: 8px; font-size: 14px; color: #ddd;">
-      Developed by: Punit Kanzariya | 
-      <a href="mailto:punitkanzariya4706@gmail.com" style="color: #80cbc4; text-decoration: none;">punitkanzariya4706@gmail.com</a> | 
+      Developed by: Punit Kanzariya |
+      <a href="mailto:punitkanzariya4706@gmail.com"
+        style="color: #80cbc4; text-decoration: none;">punitkanzariya4706@gmail.com</a> |
       <a href="https://wa.me/919624561580" target="_blank" style="color: #80cbc4; text-decoration: none;">WhatsApp</a>
     </p>
   </footer>
- 
+
   <!-- AOS JS -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
@@ -473,4 +811,5 @@
     });
   </script>
 </body>
+
 </html>
