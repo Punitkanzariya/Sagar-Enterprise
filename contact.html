@@ -64,6 +64,7 @@
       emailjs.init("-MzE86_nCtPvTbrnR"); // Replace with your EmailJS public key
     })();
   </script>
+
   <style>
     /* === Reset and Base Styles === */
     * {
@@ -289,16 +290,26 @@
       display: flex;
       flex-wrap: wrap;
       gap: 30px;
-      justify-content: center;
+      justify-content: space-between;
+      gap: 30px;
       width: 100%;
       align-items: stretch;
     }
 
     /* === Enhanced Column Styles === */
+
+    .col-lg-5 {
+      flex: 0 0 42%;
+      max-width: 42%;
+    }
+
+    .col-lg-7 {
+      flex: 0 0 56%;
+      max-width: 56%;
+    }
+
     .col-lg-5,
     .col-lg-7 {
-      flex: 1 1 0;
-      min-width: 300px;
       background: rgba(255, 255, 255, 0.95);
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
