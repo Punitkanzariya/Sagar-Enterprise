@@ -800,127 +800,55 @@
     html {
       scroll-behavior: smooth;
     }
-
     #popup-wrapper {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 99999;
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
 
-    #popup-box {
-      position: relative;
-      background: #fff;
-      border-radius: 15px;
-      overflow: hidden;
-      animation: fadeIn 0.4s ease;
-      width: auto;
-      height: auto;
-    }
+#popup-box {
+  position: relative;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  max-width: 90%;
+  max-height: 90%;
+  animation: fadeIn 0.4s ease;
+}
 
-    .carousel-container {
-      position: relative;
-      width: 100%;
-      height: auto;
-    }
+#popup-box img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 90vh;
+}
 
-    .carousel-images {
-      display: flex;
-      transition: transform 0.3s ease;
-      width: 300%;
-      /* 3 images * 100% */
-    }
+#popup-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 28px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
 
-    .carousel-images img {
-      display: block;
-      width: 33.333%;
-      /* Each image takes 1/3 of the container */
-      height: auto;
-      flex-shrink: 0;
-    }
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
 
-    #popup-close {
-      position: absolute;
-      top: 8px;
-      right: 12px;
-      font-size: 28px;
-      color: #fff;
-      background: rgba(0, 0, 0, 0.6);
-      border: none;
-      border-radius: 50%;
-      width: 35px;
-      height: 35px;
-      cursor: pointer;
-      z-index: 10;
-    }
-
-    .carousel-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.6);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 18px;
-      cursor: pointer;
-      z-index: 10;
-    }
-
-    .carousel-nav:hover {
-      background: rgba(0, 0, 0, 0.8);
-    }
-
-    .carousel-prev {
-      left: 10px;
-    }
-
-    .carousel-next {
-      right: 10px;
-    }
-
-    .carousel-dots {
-      position: absolute;
-      bottom: 15px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 10px;
-      z-index: 10;
-    }
-
-    .carousel-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5);
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .carousel-dot.active {
-      background: #fff;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
   </style>
   <link href="images/logo2.png" rel="icon">
   <link href="images/logo2.png" rel="apple-touch-icon">
@@ -929,30 +857,13 @@
 
 <body>
 
-  <!-- Popup Image Carousel -->
-  <div id="popup-wrapper" style="display: none;">
-    <div id="popup-box">
-      <div class="carousel-container">
-        <div class="carousel-images" id="carousel-images">
-          <img src="images/offer.jpg" alt="Special Offer 1" />
-          <img src="images/card.jpg" alt="Special Offer 2" />
-          <img src="images/info.jpg" alt="Special Offer 3" />
-        </div>
-
-        <button class="carousel-nav carousel-prev" id="prev-btn">‹</button>
-        <button class="carousel-nav carousel-next" id="next-btn">›</button>
-
-        <div class="carousel-dots" id="carousel-dots">
-          <span class="carousel-dot active" data-slide="0"></span>
-          <span class="carousel-dot" data-slide="1"></span>
-          <span class="carousel-dot" data-slide="2"></span>
-        </div>
-      </div>
-
-      <button id="popup-close">&times;</button>
-    </div>
+  <!-- Popup Image -->
+<div id="popup-wrapper">
+  <div id="popup-box">
+    <img src="images/offer.jpg" alt="Special Offer" />
+    <button id="popup-close">&times;</button>
   </div>
-
+</div>
 
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQRTRMM" height="0" width="0"
@@ -1109,76 +1020,21 @@
   </script>
 
   <script>
-    // In-memory storage instead of sessionStorage
-    let popupShown = false;
+  window.addEventListener('DOMContentLoaded', function () {
+    const popup = document.getElementById('popup-wrapper');
+    const closeBtn = document.getElementById('popup-close');
 
-    window.addEventListener('DOMContentLoaded', function () {
-      const popup = document.getElementById('popup-wrapper');
-      const closeBtn = document.getElementById('popup-close');
-      const carouselImages = document.getElementById('carousel-images');
-      const prevBtn = document.getElementById('prev-btn');
-      const nextBtn = document.getElementById('next-btn');
-      const dots = document.querySelectorAll('.carousel-dot');
+    // Show popup only once per session
+    if (!sessionStorage.getItem('popupShown')) {
+      popup.style.display = 'flex';
+      sessionStorage.setItem('popupShown', 'true');
+    }
 
-      let currentSlide = 0;
-      const totalSlides = 3;
-
-      // Show popup only once per session
-      if (!popupShown) {
-        popup.style.display = 'flex';
-        popupShown = true;
-      }
-
-      // Close popup
-      closeBtn.addEventListener('click', function () {
-        popup.style.display = 'none';
-      });
-
-      // Close popup when clicking outside
-      popup.addEventListener('click', function (e) {
-        if (e.target === popup) {
-          popup.style.display = 'none';
-        }
-      });
-
-      // Update carousel position
-      function updateCarousel() {
-        const translateX = -currentSlide * 33.333; // 33.333% per slide
-        carouselImages.style.transform = `translateX(${translateX}%)`;
-
-        // Update dots
-        dots.forEach((dot, index) => {
-          dot.classList.toggle('active', index === currentSlide);
-        });
-      }
-
-      // Next slide
-      nextBtn.addEventListener('click', function () {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        updateCarousel();
-      });
-
-      // Previous slide
-      prevBtn.addEventListener('click', function () {
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        updateCarousel();
-      });
-
-      // Dot navigation
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', function () {
-          currentSlide = index;
-          updateCarousel();
-        });
-      });
-
-      // Auto-advance slides (optional)
-      setInterval(function () {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        updateCarousel();
-      }, 4000); // Change slide every 4 seconds
+    closeBtn.addEventListener('click', function () {
+      popup.style.display = 'none';
     });
-  </script>
+  });
+</script>
 
 </body>
 
