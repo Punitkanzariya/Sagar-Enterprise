@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-KCQRTRMM');</script>
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KCQRTRMM');</script>
   <!-- End Google Tag Manager -->
-    <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXTB7ZFG97"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-PXTB7ZFG97');
   </script>
   <!-- Google Search Console Verification -->
-   <meta name="google-site-verification" content="c5wqqvljNLtWs-Y4wO0iCSnqaLrhL6Gwf1jaQhjBxSE" />
+  <meta name="google-site-verification" content="c5wqqvljNLtWs-Y4wO0iCSnqaLrhL6Gwf1jaQhjBxSE" />
 
   <!-- Basic Meta Tags -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Learn about Sagar Enterprise – a trusted provider of solar and electrical solutions in Dwarka, Gujarat. Dedicated to quality and customer satisfaction." />
-  <meta name="keywords" content="About Sagar Enterprise, solar company Dwarka, electrical products, Gujarat solar business, energy solutions, solar panels" />
+  <meta name="description"
+    content="Learn about Sagar Enterprise – a trusted provider of solar and electrical solutions in Dwarka, Gujarat. Dedicated to quality and customer satisfaction." />
+  <meta name="keywords"
+    content="About Sagar Enterprise, solar company Dwarka, electrical products, Gujarat solar business, energy solutions, solar panels" />
   <meta name="author" content="Sagar Enterprise" />
 
   <!-- Open Graph / Facebook / LinkedIn -->
   <meta property="og:title" content="About Us - Sagar Enterprise" />
-  <meta property="og:description" content="We are a leading provider of solar and electrical solutions in Dwarka, Gujarat. Get to know our journey and values." />
+  <meta property="og:description"
+    content="We are a leading provider of solar and electrical solutions in Dwarka, Gujarat. Get to know our journey and values." />
   <meta property="og:url" content="https://sagarenterprisedwarka.netlify.app/about" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://sagarenterprisedwarka.netlify.app/images/logo.png" />
@@ -37,7 +44,8 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="About Us - Sagar Enterprise" />
-  <meta name="twitter:description" content="Learn more about the people, values, and mission behind Sagar Enterprise." />
+  <meta name="twitter:description"
+    content="Learn more about the people, values, and mission behind Sagar Enterprise." />
   <meta name="twitter:image" content="https://sagarenterprisedwarka.netlify.app/images/logo.png" />
 
   <!-- Title and Styles -->
@@ -49,6 +57,62 @@
   <link href="images/logo2.png" rel="apple-touch-icon">
 
   <style>
+    #popup-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+    }
+
+    #popup-box {
+      position: relative;
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      max-width: 90%;
+      max-height: 90%;
+      animation: fadeIn 0.4s ease;
+    }
+
+    #popup-box img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 90vh;
+    }
+
+    #popup-close {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 28px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.6);
+      border: none;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
     /* === Reset and Base Styles === */
     * {
       margin: 0;
@@ -89,7 +153,7 @@
       display: block;
       margin: 0 auto 15px;
       border-radius: 50%;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       position: relative;
       z-index: 1;
     }
@@ -100,7 +164,7 @@
       font-weight: 700;
       position: relative;
       z-index: 1;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     /* === Navigation Container === */
@@ -139,7 +203,7 @@
       display: none;
       flex-direction: column;
       width: 100%;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       z-index: 999;
       overflow: hidden;
       transition: all 0.3s ease;
@@ -155,6 +219,7 @@
         opacity: 0;
         transform: translateY(-10px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -167,7 +232,7 @@
       text-decoration: none;
       transition: all 0.3s ease;
       font-weight: 600;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       display: block;
     }
 
@@ -240,7 +305,7 @@
       background: white;
       border-radius: 12px;
       padding: 25px 20px;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
@@ -258,7 +323,7 @@
 
     .content-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     }
 
     .content-card .icon {
@@ -296,7 +361,7 @@
       color: white;
       padding: 25px 15px;
       border-radius: 12px;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
     }
 
@@ -335,13 +400,13 @@
       border-radius: 12px;
       padding: 25px 20px;
       text-align: center;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
     }
 
     .team-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     }
 
     .team-avatar {
@@ -486,12 +551,12 @@
       text-decoration: none;
       display: inline-block;
       transition: all 0.3s ease;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
     }
 
     .cta-button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
       background: #f0f0f0;
     }
 
@@ -525,6 +590,7 @@
         opacity: 0;
         transform: translateY(30px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -536,6 +602,7 @@
         opacity: 0.5;
         transform: scale(0.8);
       }
+
       to {
         opacity: 1;
         transform: scale(1);
@@ -571,7 +638,7 @@
         flex-direction: row;
         justify-content: center;
         position: static;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       }
 
       nav a {
@@ -588,7 +655,7 @@
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
         transition: left 0.5s ease;
       }
 
@@ -754,7 +821,7 @@
       }
     }
 
-        .floating-container {
+    .floating-container {
       position: fixed;
       bottom: 20px;
       right: 20px;
@@ -794,16 +861,23 @@
       border-radius: 10px;
       cursor: pointer;
     }
-
   </style>
 </head>
 
 <body>
+
+  <!-- Popup Image -->
+  <div id="popup-wrapper">
+    <div id="popup-box">
+      <img src="images/card.jpg" alt="Special Offer" />
+      <button id="popup-close">&times;</button>
+    </div>
+  </div>
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQRTRMM"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQRTRMM" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  
+
   <header>
     <div class="logo">
       <img src="images/logo.png" alt="Sagar Enterprise Logo" />
@@ -836,25 +910,29 @@
         <div class="content-card" data-aos="fade-up" data-aos-delay="100">
           <i class="bi bi-lightbulb icon"></i>
           <h3>Our Vision</h3>
-          <p>To be Gujarat's leading provider of sustainable energy solutions, making solar power accessible and affordable for every home and business while contributing to a cleaner, greener future.</p>
+          <p>To be Gujarat's leading provider of sustainable energy solutions, making solar power accessible and
+            affordable for every home and business while contributing to a cleaner, greener future.</p>
         </div>
 
         <div class="content-card" data-aos="fade-up" data-aos-delay="200">
           <i class="bi bi-lightning-fill icon"></i>
           <h3>Our Mission</h3>
-          <p>Delivering high-quality solar and electrical solutions through innovation, reliability, and exceptional customer service. We are committed to promoting renewable energy adoption across Dwarka and beyond.</p>
+          <p>Delivering high-quality solar and electrical solutions through innovation, reliability, and exceptional
+            customer service. We are committed to promoting renewable energy adoption across Dwarka and beyond.</p>
         </div>
 
         <div class="content-card" data-aos="fade-up" data-aos-delay="300">
           <i class="bi bi-award icon"></i>
           <h3>Our Values</h3>
-          <p>Quality, integrity, and customer satisfaction drive everything we do. We believe in transparent business practices, continuous innovation, and building lasting relationships with our clients.</p>
+          <p>Quality, integrity, and customer satisfaction drive everything we do. We believe in transparent business
+            practices, continuous innovation, and building lasting relationships with our clients.</p>
         </div>
 
         <div class="content-card" data-aos="fade-up" data-aos-delay="400">
           <i class="bi bi-people icon"></i>
           <h3>Our Commitment</h3>
-          <p>From consultation to installation and after-sales support, we stand by our customers every step of the way. Your satisfaction and the performance of our solutions are our top priorities.</p>
+          <p>From consultation to installation and after-sales support, we stand by our customers every step of the way.
+            Your satisfaction and the performance of our solutions are our top priorities.</p>
         </div>
       </div>
     </section>
@@ -897,25 +975,29 @@
         <div class="content-card" data-aos="fade-right" data-aos-delay="100">
           <i class="bi bi-shield-check icon"></i>
           <h3>Quality Assurance</h3>
-          <p>We source only the finest solar panels and electrical components from trusted manufacturers, ensuring long-lasting performance and reliability for your investment.</p>
+          <p>We source only the finest solar panels and electrical components from trusted manufacturers, ensuring
+            long-lasting performance and reliability for your investment.</p>
         </div>
 
         <div class="content-card" data-aos="fade-left" data-aos-delay="200">
           <i class="bi bi-tools icon"></i>
           <h3>Expert Installation</h3>
-          <p>Our certified technicians bring years of experience to every project, ensuring proper installation and optimal system performance from day one.</p>
+          <p>Our certified technicians bring years of experience to every project, ensuring proper installation and
+            optimal system performance from day one.</p>
         </div>
 
         <div class="content-card" data-aos="fade-right" data-aos-delay="300">
           <i class="bi bi-headset icon"></i>
           <h3>Ongoing Support</h3>
-          <p>We provide comprehensive after-sales service including maintenance, troubleshooting, and system optimization to maximize your solar investment.</p>
+          <p>We provide comprehensive after-sales service including maintenance, troubleshooting, and system
+            optimization to maximize your solar investment.</p>
         </div>
 
         <div class="content-card" data-aos="fade-left" data-aos-delay="400">
           <i class="bi bi-currency-rupee icon"></i>
           <h3>Competitive Pricing</h3>
-          <p>We offer transparent, competitive pricing with flexible financing options to make solar energy accessible for homes and businesses of all sizes.</p>
+          <p>We offer transparent, competitive pricing with flexible financing options to make solar energy accessible
+            for homes and businesses of all sizes.</p>
         </div>
       </div>
     </section>
@@ -930,11 +1012,13 @@
       <div class="team-grid">
         <div class="team-card" data-aos="flip-left" data-aos-delay="100">
           <div class="team-avatar">
-            <img src="images/sagar.jpeg" alt="Sagar Nakum" onerror="this.style.display='none'; this.parentNode.innerHTML='SN';">
+            <img src="images/sagar.jpeg" alt="Sagar Nakum"
+              onerror="this.style.display='none'; this.parentNode.innerHTML='SN';">
           </div>
           <h4>Sagar Nakum</h4>
           <div class="role">Founder & CEO</div>
-          <p>Leading Sagar Enterprise with a vision for sustainable energy and customer excellence. Bringing over a decade of experience in the renewable energy sector.</p>
+          <p>Leading Sagar Enterprise with a vision for sustainable energy and customer excellence. Bringing over a
+            decade of experience in the renewable energy sector.</p>
           <div class="team-contact">
             <a href="mailto:sagarenterprise030@gmail.com" title="Email">
               <i class="bi bi-envelope"></i>
@@ -949,7 +1033,8 @@
           <div class="team-avatar">TT</div>
           <h4>Technical Team</h4>
           <div class="role">Installation Experts</div>
-          <p>Our certified technicians ensure every installation meets the highest standards of quality and safety, providing reliable solar solutions for our customers.</p>
+          <p>Our certified technicians ensure every installation meets the highest standards of quality and safety,
+            providing reliable solar solutions for our customers.</p>
           <div class="team-contact">
             <a href="mailto:sagarenterprise030@gmail.com" title="Email">
               <i class="bi bi-envelope"></i>
@@ -964,24 +1049,27 @@
           <div class="team-avatar">CS</div>
           <h4>Customer Support</h4>
           <div class="role">Service Team</div>
-          <p>Dedicated to providing exceptional customer service and support throughout your solar journey, from initial consultation to ongoing maintenance.</p>
+          <p>Dedicated to providing exceptional customer service and support throughout your solar journey, from initial
+            consultation to ongoing maintenance.</p>
           <div class="team-contact">
             <a href="mailto:sagarenterprise030@gmail.com" title="Email">
               <i class="bi bi-envelope"></i>
             </a>
             <a href="https://wa.me/917698004045" target="_blank" title="WhatsApp">
               <i class="bi bi-whatsapp"></i>
-              </a>
+            </a>
           </div>
         </div>
 
         <div class="team-card developer" data-aos="flip-left" data-aos-delay="400">
           <div class="team-avatar">
-            <img src="images/punit.jpeg" alt="Punit Kanzariya" onerror="this.style.display='none'; this.parentNode.innerHTML='PK';">
+            <img src="images/punit.jpeg" alt="Punit Kanzariya"
+              onerror="this.style.display='none'; this.parentNode.innerHTML='PK';">
           </div>
           <h4>Punit Kanzariya</h4>
           <div class="role">Web Developer</div>
-          <p>Crafting digital experiences and maintaining the online presence of Sagar Enterprise. Specializing in modern web technologies and user-friendly designs.</p>
+          <p>Crafting digital experiences and maintaining the online presence of Sagar Enterprise. Specializing in
+            modern web technologies and user-friendly designs.</p>
           <div class="team-contact">
             <a href="mailto:punitkanzariya4706@gmail.com" title="Email">
               <i class="bi bi-envelope"></i>
@@ -998,7 +1086,8 @@
     <div class="cta-section" data-aos="fade-up" data-aos-delay="100">
       <div class="cta-content">
         <h2>Ready to Go Solar?</h2>
-        <p>Join hundreds of satisfied customers who have made the switch to clean, renewable energy. Let us help you reduce your electricity bills and carbon footprint.</p>
+        <p>Join hundreds of satisfied customers who have made the switch to clean, renewable energy. Let us help you
+          reduce your electricity bills and carbon footprint.</p>
         <a href="contact.html" class="cta-button">Get Free Quote Today</a>
       </div>
     </div>
@@ -1007,17 +1096,20 @@
 
       <!-- Developer WhatsApp Button -->
       <div class="floating-wrapper">
-        <a href="https://wa.me/919624561580?text=Hi%2C%20I%20am%20interested%20in%20developer%20services" target="_blank" class="floating-btn">
+        <a href="https://wa.me/919624561580?text=Hi%2C%20I%20am%20interested%20in%20developer%20services"
+          target="_blank" class="floating-btn">
           Developer
         </a>
-        <a href="https://wa.me/919624561580?text=Hi%2C%20I%20am%20interested%20in%20developer%20services" target="_blank">
+        <a href="https://wa.me/919624561580?text=Hi%2C%20I%20am%20interested%20in%20developer%20services"
+          target="_blank">
           <img src="images/dev-icon.png" alt="Developer" class="icon-img">
         </a>
       </div>
 
       <!-- General WhatsApp Button -->
       <div class="floating-wrapper">
-        <a href="https://wa.me/917698004045?text=Hello%2C%20I%20need%20some%20help" target="_blank" class="floating-btn">
+        <a href="https://wa.me/917698004045?text=Hello%2C%20I%20need%20some%20help" target="_blank"
+          class="floating-btn">
           WhatsApp us
         </a>
         <a href="https://wa.me/917698004045?text=Hello%2C%20I%20need%20some%20help" target="_blank">
@@ -1032,8 +1124,8 @@
   <footer>
     <p>© 2025 Sagar Enterprise. All rights reserved.</p>
     <p style="margin-top: 8px; font-size: 14px; color: #ddd;">
-      Developed by: Punit Kanzariya | 
-      <a href="mailto:punitkanzariya4706@gmail.com">punitkanzariya4706@gmail.com</a> | 
+      Developed by: Punit Kanzariya |
+      <a href="mailto:punitkanzariya4706@gmail.com">punitkanzariya4706@gmail.com</a> |
       <a href="https://wa.me/919624561580" target="_blank">WhatsApp</a>
     </p>
   </footer>
@@ -1059,9 +1151,9 @@
       const increment = target / 100;
       const duration = 2000; // 2 seconds
       const stepTime = duration / 100;
-      
+
       element.classList.add('counting');
-      
+
       const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
@@ -1070,7 +1162,7 @@
           element.classList.remove('counting');
           element.parentElement.classList.add('animate-count');
         }
-        
+
         if (target >= 1000) {
           element.textContent = Math.floor(current).toLocaleString() + suffix;
         } else {
@@ -1086,13 +1178,13 @@
           const element = entry.target;
           const target = parseInt(element.getAttribute('data-target'));
           const suffix = element.getAttribute('data-suffix') || '';
-          
+
           // Only animate if not already animated
           if (!element.classList.contains('animated')) {
             element.classList.add('animated');
             animateCounter(element, target, suffix);
           }
-          
+
           counterObserver.unobserve(element);
         }
       });
@@ -1119,10 +1211,10 @@
     });
 
     // Add scroll-to-top functionality
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
       const scrolled = window.pageYOffset;
       const rate = scrolled * -0.5;
-      
+
       // Parallax effect for header
       const header = document.querySelector('header');
       if (header) {
@@ -1131,9 +1223,10 @@
     });
 
     // Add loading animation
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
       document.body.classList.add('loaded');
     });
   </script>
 </body>
+
 </html>
