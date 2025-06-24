@@ -950,22 +950,23 @@
               </p>
               <canvas id="captcha-canvas" class="captcha-canvas" width="300" height="100"></canvas>
               <div class="d-flex justify-content-center gap-2 mb-3">
-                <button type="button" class="captcha-refresh" onclick="generateCaptcha()">
+                <button type="button" class="captcha-refresh" onclick="generateCaptcha()" style="background: #38a169;">
                   <i class="bi bi-arrow-clockwise"></i> New Code
                 </button>
                 <button type="button" class="captcha-refresh" onclick="playAudio()" style="background: #38a169;">
                   <i class="bi bi-volume-up"></i> Audio
                 </button>
               </div>
+              <br>
               <div class="mt-3">
-                <input type="text" id="captcha-input" class="form-control captcha-input" 
-                       placeholder="Enter the code above" maxlength="5" required>
+                <input type="text" id="captcha-input" class="form-control captcha-input"
+                  placeholder="Enter the code above" maxlength="5" required>
               </div>
               <div id="captcha-message"></div>
             </div>
           </div>
 
-          <button type="submit" data-aos="zoom-in" data-aos-delay="900">Send Message</button>
+          <button type="submit" class="mt-3" data-aos="zoom-in" data-aos-delay="900">Send Message</button>
 
           <p id="loading">Sending message...</p>
           <p id="success-message">Your message has been sent successfully!</p>
@@ -1053,21 +1054,21 @@
   <script>
     let currentCaptcha = '';
 
-    // Generate random CAPTCHA string with clear characters
+    // Generate random CAPTCHA string with clear characters (mixed case)
     function generateCaptcha() {
-      // Using only clear, distinguishable characters
-      const characters = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+      // Using only clear, distinguishable characters - both uppercase and lowercase
+      const characters = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
       let captcha = '';
-      
+
       for (let i = 0; i < 5; i++) {
         captcha += characters.charAt(Math.floor(Math.random() * characters.length));
       }
-      
+
       currentCaptcha = captcha;
       drawCaptcha(captcha);
       document.getElementById('captcha-input').value = '';
       document.getElementById('captcha-message').innerHTML = '';
-      
+
       // Reset any previous validation styling
       document.getElementById('captcha-input').style.borderColor = '#e2e8f0';
     }
@@ -1076,14 +1077,14 @@
     function drawCaptcha(text) {
       const canvas = document.getElementById('captcha-canvas');
       const ctx = canvas.getContext('2d');
-      
+
       // Clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
+
       // Set background
       ctx.fillStyle = '#f8fafc';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
+
       // Add subtle grid pattern for security
       ctx.strokeStyle = '#e2e8f0';
       ctx.lineWidth = 1;
@@ -1099,18 +1100,18 @@
         ctx.lineTo(canvas.width, i);
         ctx.stroke();
       }
-      
+
       // Draw each character with slight variations
       const colors = ['#2d3748', '#4a5568', '#667eea', '#2b6cb0', '#553c9a'];
       ctx.font = 'bold 36px Arial';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      
+
       for (let i = 0; i < text.length; i++) {
         const x = 60 + (i * 48);
         const y = 50 + (Math.random() * 10 - 5); // Slight vertical variation
         const angle = (Math.random() * 0.4 - 0.2); // Slight rotation
-        
+
         ctx.save();
         ctx.translate(x, y);
         ctx.rotate(angle);
@@ -1118,7 +1119,7 @@
         ctx.fillText(text[i], 0, 0);
         ctx.restore();
       }
-      
+
       // Add some noise dots for security
       ctx.fillStyle = '#cbd5e0';
       for (let i = 0; i < 30; i++) {
@@ -1128,7 +1129,7 @@
         ctx.arc(x, y, 1, 0, 2 * Math.PI);
         ctx.fill();
       }
-      
+
       // Add some random lines
       ctx.strokeStyle = '#e2e8f0';
       ctx.lineWidth = 2;
@@ -1153,12 +1154,12 @@
       }
     }
 
-    // Validate CAPTCHA
+    // Validate CAPTCHA (case-sensitive now)
     function validateCaptcha() {
-      const userInput = document.getElementById('captcha-input').value.toUpperCase().trim();
+      const userInput = document.getElementById('captcha-input').value.trim(); // Removed toUpperCase() for case sensitivity
       const messageDiv = document.getElementById('captcha-message');
       const inputField = document.getElementById('captcha-input');
-      
+
       if (userInput === currentCaptcha) {
         messageDiv.innerHTML = '<div class="captcha-success"><i class="bi bi-check-circle"></i> Verification successful!</div>';
         inputField.style.borderColor = '#38a169';
@@ -1175,12 +1176,12 @@
     }
 
     // Real-time CAPTCHA validation
-    document.getElementById('captcha-input').addEventListener('input', function() {
+    document.getElementById('captcha-input').addEventListener('input', function () {
       validateCaptcha();
     });
 
     // Initialize EmailJS and generate initial CAPTCHA
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       generateCaptcha();
     });
     window.addEventListener('DOMContentLoaded', function () {
