@@ -941,6 +941,30 @@
           <label for="message" data-aos="fade-up" data-aos-delay="800">Message</label>
           <textarea id="message" name="message" rows="6" required data-aos="fade-up" data-aos-delay="850"></textarea>
 
+          <!-- Custom CAPTCHA -->
+          <div class="col-md-12">
+            <label class="pb-2">Security Verification</label>
+            <div class="captcha-container">
+              <p style="color: #718096; margin-bottom: 1rem; font-size: 0.9rem;">
+                Please enter the characters shown below (case insensitive):
+              </p>
+              <canvas id="captcha-canvas" class="captcha-canvas" width="300" height="100"></canvas>
+              <div class="d-flex justify-content-center gap-2 mb-3">
+                <button type="button" class="captcha-refresh" onclick="generateCaptcha()">
+                  <i class="bi bi-arrow-clockwise"></i> New Code
+                </button>
+                <button type="button" class="captcha-refresh" onclick="playAudio()" style="background: #38a169;">
+                  <i class="bi bi-volume-up"></i> Audio
+                </button>
+              </div>
+              <div class="mt-3">
+                <input type="text" id="captcha-input" class="form-control captcha-input" 
+                       placeholder="Enter the code above" maxlength="5" required>
+              </div>
+              <div id="captcha-message"></div>
+            </div>
+          </div>
+
           <button type="submit" data-aos="zoom-in" data-aos-delay="900">Send Message</button>
 
           <p id="loading">Sending message...</p>
@@ -1027,6 +1051,138 @@
   </script>
 
   <script>
+    let currentCaptcha = '';
+
+    // Generate random CAPTCHA string with clear characters
+    function generateCaptcha() {
+      // Using only clear, distinguishable characters
+      const characters = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+      let captcha = '';
+      
+      for (let i = 0; i < 5; i++) {
+        captcha += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      
+      currentCaptcha = captcha;
+      drawCaptcha(captcha);
+      document.getElementById('captcha-input').value = '';
+      document.getElementById('captcha-message').innerHTML = '';
+      
+      // Reset any previous validation styling
+      document.getElementById('captcha-input').style.borderColor = '#e2e8f0';
+    }
+
+    // Draw CAPTCHA on canvas with clear, readable text
+    function drawCaptcha(text) {
+      const canvas = document.getElementById('captcha-canvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Set background
+      ctx.fillStyle = '#f8fafc';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Add subtle grid pattern for security
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 1;
+      for (let i = 0; i < canvas.width; i += 20) {
+        ctx.beginPath();
+        ctx.moveTo(i, 0);
+        ctx.lineTo(i, canvas.height);
+        ctx.stroke();
+      }
+      for (let i = 0; i < canvas.height; i += 20) {
+        ctx.beginPath();
+        ctx.moveTo(0, i);
+        ctx.lineTo(canvas.width, i);
+        ctx.stroke();
+      }
+      
+      // Draw each character with slight variations
+      const colors = ['#2d3748', '#4a5568', '#667eea', '#2b6cb0', '#553c9a'];
+      ctx.font = 'bold 36px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      
+      for (let i = 0; i < text.length; i++) {
+        const x = 60 + (i * 48);
+        const y = 50 + (Math.random() * 10 - 5); // Slight vertical variation
+        const angle = (Math.random() * 0.4 - 0.2); // Slight rotation
+        
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(angle);
+        ctx.fillStyle = colors[i % colors.length];
+        ctx.fillText(text[i], 0, 0);
+        ctx.restore();
+      }
+      
+      // Add some noise dots for security
+      ctx.fillStyle = '#cbd5e0';
+      for (let i = 0; i < 30; i++) {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        ctx.beginPath();
+        ctx.arc(x, y, 1, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+      
+      // Add some random lines
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 2;
+      for (let i = 0; i < 3; i++) {
+        ctx.beginPath();
+        ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+        ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+        ctx.stroke();
+      }
+    }
+
+    // Audio feedback for accessibility
+    function playAudio() {
+      const text = currentCaptcha.split('').join(' ');
+      if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.7;
+        utterance.pitch = 1;
+        speechSynthesis.speak(utterance);
+      } else {
+        alert('Audio CAPTCHA: ' + text);
+      }
+    }
+
+    // Validate CAPTCHA
+    function validateCaptcha() {
+      const userInput = document.getElementById('captcha-input').value.toUpperCase().trim();
+      const messageDiv = document.getElementById('captcha-message');
+      const inputField = document.getElementById('captcha-input');
+      
+      if (userInput === currentCaptcha) {
+        messageDiv.innerHTML = '<div class="captcha-success"><i class="bi bi-check-circle"></i> Verification successful!</div>';
+        inputField.style.borderColor = '#38a169';
+        return true;
+      } else if (userInput.length === 5) {
+        messageDiv.innerHTML = '<div class="captcha-error"><i class="bi bi-x-circle"></i> Incorrect code. Please try again.</div>';
+        inputField.style.borderColor = '#e53e3e';
+        return false;
+      } else {
+        messageDiv.innerHTML = '';
+        inputField.style.borderColor = '#e2e8f0';
+        return false;
+      }
+    }
+
+    // Real-time CAPTCHA validation
+    document.getElementById('captcha-input').addEventListener('input', function() {
+      validateCaptcha();
+    });
+
+    // Initialize EmailJS and generate initial CAPTCHA
+    document.addEventListener('DOMContentLoaded', function() {
+      generateCaptcha();
+    });
     window.addEventListener('DOMContentLoaded', function () {
       const popup = document.getElementById('popup-wrapper');
       const closeBtn = document.getElementById('popup-close');
