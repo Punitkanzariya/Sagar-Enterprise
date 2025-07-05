@@ -675,12 +675,15 @@
       }
     }
     canvas#particlesCanvas {
-    position: fixed; /* changed from absolute to fixed */
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
 
   </style>
 </head>
@@ -999,12 +1002,14 @@
 
   // Resize canvas to fill the window
   function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = document.documentElement.clientWidth;
+    canvas.height = document.documentElement.clientHeight;
   }
-
+  
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
+  window.addEventListener("orientationchange", resizeCanvas);
+
 
   let particles = [];
   const numParticles = window.innerWidth < 600 ? 50 : 100; // Lower particles on small screens
