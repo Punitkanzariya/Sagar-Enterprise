@@ -674,10 +674,19 @@
         height: 45px;
       }
     }
+    canvas#particlesCanvas {
+    position: fixed; /* changed from absolute to fixed */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    }
+
   </style>
 </head>
 
 <body>
+    <canvas id="particlesCanvas"></canvas>
 
   <!-- Popup Image -->
   <div id="popup-wrapper">
@@ -709,6 +718,7 @@
   </div>
 
   <main>
+
     <!-- Hero Section -->
     <section class="hero-section" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
       <h2 data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">Powering Gujarat with Solar Solutions</h2>
@@ -983,6 +993,85 @@
       });
     });
   </script>
+  <script>
+  const canvas = document.getElementById('particlesCanvas');
+  const ctx = canvas.getContext('2d');
+
+  // Resize canvas to fill the window
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  let particles = [];
+  const numParticles = window.innerWidth < 600 ? 50 : 100; // Lower particles on small screens
+
+  // Particle Constructor
+  function Particle(x, y) {
+    this.x = x;
+    this.y = y;
+    this.radius = Math.random() * 3 + 1;
+    this.speedX = Math.random() * 2 - 1;
+    this.speedY = Math.random() * 2 - 1;
+    this.opacity = Math.random() * 0.5 + 0.3;
+
+    this.update = function() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+      if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+    };
+
+    this.draw = function() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(0, 105, 92, ${this.opacity})`; // Green color
+      ctx.fill();
+    };
+  }
+
+  // Create particles when mouse is moved
+  function createParticles(event) {
+    const mousePos = getMousePosition(event);
+    for (let i = 0; i < numParticles; i++) {
+      particles.push(new Particle(mousePos.x, mousePos.y));
+    }
+  }
+
+  // Get mouse position relative to canvas
+  function getMousePosition(event) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top
+    };
+  }
+
+  // Animate particles
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((particle, index) => {
+      particle.update();
+      particle.draw();
+
+      // Remove particles that are out of the screen
+      if (particle.x > canvas.width || particle.x < 0 || particle.y > canvas.height || particle.y < 0) {
+        particles.splice(index, 1);
+      }
+    });
+    requestAnimationFrame(animateParticles);
+  }
+
+  // Event listener for mouse move
+  canvas.addEventListener('mousemove', createParticles);
+
+  // Start the animation
+  animateParticles();
+</script>
 </body>
 
 </html>
